@@ -1,76 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #0d2054;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AdminWindowController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #0d2054;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AdminWindowController">
    <children>
-      <AnchorPane layoutX="224.0" style="-fx-background-color: #0d2054;">
+      <AnchorPane layoutX="224.0" style="-fx-background-color: #0d2054;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane fx:id="displayBooksPane" layoutX="73.0" layoutY="76.0" style="-fx-background-color: #0d2054;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="addReaderPane" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #6baddf;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="booksTable" layoutX="2.0" layoutY="160.0" prefHeight="600.0">
-                    <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID" />
-                      <TableColumn fx:id="titleColumn" prefWidth="220.0" text="Title" />
-                      <TableColumn fx:id="authorColumn" prefWidth="120.0" text="Author" />
-                        <TableColumn fx:id="publisherColumn" text="Publisher" />
-                       <TableColumn fx:id="yearColumn" prefWidth="60.0" text="Year" />
-                       <TableColumn fx:id="pagesColumn" prefWidth="60.0" text="Pages" />
-                       <TableColumn fx:id="sectionColumn" minWidth="0.0" prefWidth="70.0" text="Section" />
-                       <TableColumn fx:id="availabilityColumn" prefWidth="90.0" text="Availability" />
-                       <TableColumn fx:id="atReaderColumn" minWidth="0.0" prefWidth="0.0" text="At Reader" />
-                       <TableColumn fx:id="untilColumn" prefWidth="60.0" text="Until" />
-                    </columns>
-                     <padding>
-                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                     </padding>
-                  </TableView>
+                  <SplitPane fx:id="addReaderSplitPane" dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <AnchorPane fx:id="addReaderSplitPaneUp1" maxHeight="200.0" minHeight="200.0" minWidth="0.0" prefHeight="200.0" style="-fx-background-color: #6baddf;">
+                           <children>
+                              <TextField fx:id="addBookTitle1" layoutX="125.0" layoutY="55.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutY="60.0" text="Title:" textFill="#0d2054" AnchorPane.leftAnchor="50.0" />
+                              <Label layoutY="100.0" text="Author:" textFill="#0d2054" AnchorPane.leftAnchor="50.0" />
+                              <TextField fx:id="addBookAuthor1" layoutX="125.0" layoutY="95.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutY="140.0" text="Publisher:" textFill="#0d2054" AnchorPane.leftAnchor="50.0" />
+                              <TextField fx:id="addBookPublisher1" layoutX="125.0" layoutY="135.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="20.0" layoutY="15.0" text="Add New Reader:" textFill="#0d2054">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addBookYear1" layoutX="440.0" layoutY="55.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="365.0" layoutY="60.0" text="Year:" textFill="#0d2054" />
+                              <Label layoutX="365.0" layoutY="100.0" text="Pages:" textFill="#0d2054" />
+                              <TextField fx:id="addBookPages1" layoutX="440.0" layoutY="95.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="365.0" layoutY="140.0" text="Section:" textFill="#0d2054" />
+                              <TextField fx:id="addBookSection1" layoutX="440.0" layoutY="135.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Button layoutX="685.0" layoutY="83.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #0d2054;" text="ADD" textFill="#6baddf" />
+                           </children>
+                        </AnchorPane>
+                        <fx:include fx:id="displayReaders" source="ManageReaders.fxml" />
+                     </items>
+                  </SplitPane>
                </children>
-            </Pane>
-            <Pane fx:id="displayReadersPane" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+            </AnchorPane>
+            <AnchorPane fx:id="addBookPane" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #6baddf;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="ReadersTable" layoutY="167.0" prefHeight="600.0">
-                     <columns>
-                        <TableColumn fx:id="idColumn1" prefWidth="30.0" text="ID" />
-                        <TableColumn fx:id="titleColumn1" prefWidth="500.0" text="First Name" />
-                        <TableColumn fx:id="authorColumn1" prefWidth="120.0" text="Second Name" />
-                        <TableColumn fx:id="publisherColumn1" text="IC Series" />
-                        <TableColumn fx:id="yearColumn1" prefWidth="60.0" text="IC Number" />
-                        <TableColumn fx:id="pagesColumn1" prefWidth="60.0" text="Address" />
-                        <TableColumn fx:id="sectionColumn1" minWidth="0.0" prefWidth="70.0" text="e-mail" />
-                        <TableColumn fx:id="availabilityColumn1" prefWidth="90.0" text="Phone" />
-                        <TableColumn fx:id="atReaderColumn1" minWidth="0.0" prefWidth="0.0" text="At Reader" />
-                        <TableColumn fx:id="untilColumn1" prefWidth="60.0" text="User" />
-                     </columns>
-                     <padding>
-                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                     </padding>
-                  </TableView>
-               </children></Pane>
+                  <SplitPane fx:id="addBookSplitPane" dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <AnchorPane fx:id="addBookSplitPaneUp" maxHeight="200.0" minHeight="200.0" minWidth="0.0" prefHeight="200.0" style="-fx-background-color: #6baddf;">
+                           <children>
+                              <TextField fx:id="addBookTitle" layoutX="125.0" layoutY="55.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutY="60.0" text="Title:" textFill="#0d2054" AnchorPane.leftAnchor="50.0" />
+                              <Label layoutY="100.0" text="Author:" textFill="#0d2054" AnchorPane.leftAnchor="50.0" />
+                              <TextField fx:id="addBookAuthor" layoutX="125.0" layoutY="95.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutY="140.0" text="Publisher:" textFill="#0d2054" AnchorPane.leftAnchor="50.0" />
+                              <TextField fx:id="addBookPublisher" layoutX="125.0" layoutY="135.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="20.0" layoutY="15.0" text="Add New Book:" textFill="#0d2054">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addBookYear" layoutX="440.0" layoutY="55.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="365.0" layoutY="60.0" text="Year:" textFill="#0d2054" />
+                              <Label layoutX="365.0" layoutY="100.0" text="Pages:" textFill="#0d2054" />
+                              <TextField fx:id="addBookPages" layoutX="440.0" layoutY="95.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="365.0" layoutY="140.0" text="Section:" textFill="#0d2054" />
+                              <TextField fx:id="addBookSection" layoutX="440.0" layoutY="135.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Button layoutX="685.0" layoutY="83.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #0d2054;" text="ADD" textFill="#6baddf" />
+                           </children></AnchorPane>
+                        <fx:include fx:id="displayBooks" source="ManageBooks.fxml" />
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="displayProfilePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6baddf;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="309.0" layoutY="132.0" text="Edit Your Profile">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="219.0" text="First Name:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="269.0" text="Second Name:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="319.0" text="Address:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="369.0" text="e-mail:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="419.0" text="Telehone:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="469.0" text="Username:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="519.0" text="Password:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="569.0" text="Repeat password:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="updateProfileButton" minWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #0d2054;" text="Update Profile Informations" textFill="#6baddf" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+                  <TextField layoutX="274.0" layoutY="219.0" prefHeight="20.0" prefWidth="400.0" />
+                  <TextField layoutX="274.0" layoutY="269.0" prefHeight="20.0" prefWidth="400.0" />
+                  <TextField layoutX="274.0" layoutY="319.0" prefHeight="20.0" prefWidth="400.0" />
+                  <TextField layoutX="274.0" layoutY="369.0" prefHeight="20.0" prefWidth="400.0" />
+                  <TextField layoutX="274.0" layoutY="419.0" prefHeight="20.0" prefWidth="400.0" />
+                  <TextField layoutX="274.0" layoutY="469.0" prefHeight="20.0" prefWidth="400.0" />
+                  <TextField layoutX="274.0" layoutY="519.0" prefHeight="20.0" prefWidth="400.0" />
+                  <TextField layoutX="274.0" layoutY="569.0" prefHeight="20.0" prefWidth="400.0" />
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane style="-fx-background-color: #0d2054;">
+      <AnchorPane style="-fx-background-color: #0d2054;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="booksButton" layoutY="200.0" mnemonicParsing="false" onAction="#booksButtonOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Display books" textFill="#bababa" />
-            <Button fx:id="readersButton" layoutY="325.0" mnemonicParsing="false" onAction="#readersButtonOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Display all readers" textFill="#bababa" />
-            <Button fx:id="addBook" layoutY="225.0" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Add new book" textFill="#bababa" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="12.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/ALLBIB.png" />
                </image>
             </ImageView>
-            <Label layoutX="15.0" layoutY="180.0" text="MANAGE BOOKS:" textFill="#bababa" />
-            <Label layoutX="15.0" layoutY="300.0" text="MANAGE READERS:" textFill="#bababa" />
-            <Button fx:id="addBook1" layoutY="251.0" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Reviews" textFill="#bababa" />
-            <Button fx:id="readersButton1" layoutY="351.0" mnemonicParsing="false" onAction="#readersButtonOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Handle a book" textFill="#bababa" />
+            <Label layoutX="20.0" layoutY="375.0" text="MANAGE BOOKS:" textFill="#c65156" />
+            <Label layoutX="20.0" layoutY="500.0" text="MANAGE READERS:" textFill="#c65156" />
+            <Label layoutX="20.0" layoutY="250.0" text="PROFILE:" textFill="#c65156" />
+            <Hyperlink fx:id="addBookLink" layoutX="30.0" layoutY="400.0" onAction="#addBookAction" text="Add/Remove Books" />
+            <Hyperlink fx:id="displayReviewsLink" layoutX="30.0" layoutY="425.0" onAction="#displayReviewsAction" text="Reviews" />
+            <Label layoutX="20.0" layoutY="200.0" text="STATUS: " textFill="#c65156" />
+            <Hyperlink layoutX="30.0" layoutY="525.0" onAction="#addReaderAction" text="Add/Remove Readers" />
+            <Hyperlink layoutX="30.0" layoutY="300.0" onAction="#addAdministratorAction" text="Manage admin profiles" />
+            <Hyperlink onAction="#signOutAction" text="SIGN OUT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
+            <Hyperlink layoutX="144.0" layoutY="716.0" onAction="#exitAction" text="EXIT" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Label layoutX="88.0" layoutY="200.0" text="Administrator" textFill="#6baddf" />
+            <Hyperlink fx:id="yourProfile" layoutX="30.0" layoutY="275.0" onAction="#editYourProfileAction" text="Edit Your Profile" />
+            <Label fx:id="userLabel" layoutX="88.0" layoutY="250.0" textFill="#6baddf" />
          </children>
       </AnchorPane>
    </children>
+   <stylesheets>
+      <URL value="@Styles.css" />
+   </stylesheets>
 </AnchorPane>

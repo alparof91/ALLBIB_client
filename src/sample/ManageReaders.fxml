@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="displayReadersTablePane" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManageReadersController">
+   <children>
+      <TableView fx:id="readersTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columns>
+            <TableColumn fx:id="readerID" prefWidth="30.0" text="ID" />
+            <TableColumn fx:id="readerFirstName" prefWidth="200.0" text="First Name" />
+            <TableColumn fx:id="readerSecondName" prefWidth="200.0" text="Second Name" />
+            <TableColumn fx:id="readerAddress" prefWidth="200.0" text="Address" />
+            <TableColumn fx:id="readerEmail" minWidth="0.0" prefWidth="200.0" text="e-mail" />
+            <TableColumn fx:id="readerTelephone" prefWidth="200.0" text="Phone" />
+            <TableColumn fx:id="atReaderColumn1" minWidth="0.0" prefWidth="0.0" text="At Reader" />
+            <TableColumn fx:id="readerUser" prefWidth="200.0" text="User" />
+         </columns>
+         <padding>
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+         </padding>
+      </TableView>
+   </children>
+</AnchorPane>

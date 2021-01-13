@@ -1,0 +1,9 @@
+.hyperlink {
+    -fx-text-fill:  #6baddf;
+    -fx-underline: false
+}
+
+.hyperlink:visited{
+    -fx-text-fill:  #6baddf;
+    -fx-underline: false;
+}
