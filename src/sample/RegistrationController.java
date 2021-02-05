@@ -90,7 +90,7 @@ public class RegistrationController {
             System.out.println("Sending to server:\ncommand: addReader,\ndata: " + payload);
             sendToServer("addReader",payload);
 
-            System.out.println("You have successfully signed up! Back to login!");
+            System.out.println(userField.getText() + "signed up! Back to login!");
             backToLogin();
         }
     }

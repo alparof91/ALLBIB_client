@@ -54,6 +54,16 @@ public class Books implements Serializable {
 		this.returnDate = returnDate;
 	}
 
+	public Books(String title, String author, String publisher, String year, int pages, String section, String availability) {
+		this.title = title;
+		this.author = author;
+		this.publisher = publisher;
+		this.year = year;
+		this.pages = pages;
+		this.section = section;
+		this.availability = availability;
+	}
+
 	public int getIdBook() {
 		return idBook;
 	}

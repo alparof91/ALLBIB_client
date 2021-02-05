@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.entity.Readers;
+import sample.entity.Admins;
 import sample.entity.User;
 
 import java.lang.reflect.Type;
@@ -20,37 +20,37 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class ManageReadersController implements Initializable {
+public class ManageAdminsController implements Initializable {
 
     public static String serverResponse;
     public static final String HOSTNAME = "localhost";
     public static final int PORT = 9001;
 
     @FXML
-    private TableView<Readers> readersTable;
+    private TableView<Admins> adminsTable;
 
     @FXML
-    private TableColumn<Readers, Integer> readerID;
+    private TableColumn<Admins, Integer> adminID;
 
     @FXML
-    private TableColumn<Readers, String> readerFirstName;
+    private TableColumn<Admins, String> adminFirstName;
 
     @FXML
-    private TableColumn<Readers, String> readerSecondName;
+    private TableColumn<Admins, String> adminSecondName;
 
     @FXML
-    private TableColumn<Readers, String> readerAddress;
+    private TableColumn<Admins, String> adminAddress;
 
     @FXML
-    private TableColumn<Readers, String> readerEmail;
+    private TableColumn<Admins, String> adminEmail;
 
     @FXML
-    private TableColumn<Readers, String> readerTelephone;
+    private TableColumn<Admins, String> adminTelephone;
 
     @FXML
-    private TableColumn<Readers, User> readerUser;
+    private TableColumn<Admins, User> adminUser;
 
-    ObservableList<Readers> readersTableList = FXCollections.observableArrayList();
+    ObservableList<Admins> adminsTableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,7 +59,7 @@ public class ManageReadersController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String payload = "";
-        String command = "fetchReaders";
+        String command = "fetchAdmins";
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -71,22 +71,22 @@ public class ManageReadersController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
             Gson gson = new Gson();
-            //Readers[] readers = gson.fromJson(serverResponse,Readers[].class);
-            Type collectionType = new TypeToken<Collection<Readers>>(){}.getType();
-            Collection<Readers> readers = gson.fromJson(serverResponse, collectionType);
-            readersTableList.addAll(readers);
+            //Admins[] admins = gson.fromJson(serverResponse,Admins[].class);
+            Type collectionType = new TypeToken<Collection<Admins>>(){}.getType();
+            Collection<Admins> admins = gson.fromJson(serverResponse, collectionType);
+            adminsTableList.addAll(admins);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        readerID.setCellValueFactory(new PropertyValueFactory<>("idReader"));
-        readerFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        readerSecondName.setCellValueFactory(new PropertyValueFactory<>("secondName"));
-        readerAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        readerEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        readerTelephone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        readerUser.setCellValueFactory(new PropertyValueFactory<>("user"));
+        adminID.setCellValueFactory(new PropertyValueFactory<>("idAdmin"));
+        adminFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        adminSecondName.setCellValueFactory(new PropertyValueFactory<>("secondName"));
+        adminAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        adminEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        adminTelephone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        adminUser.setCellValueFactory(new PropertyValueFactory<>("user"));
 
-        readersTable.setItems(readersTableList);
+        adminsTable.setItems(adminsTableList);
     }
 }

@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AdminWindowController">
    <left>
@@ -29,15 +18,15 @@
             </ImageView>
             <Label layoutX="20.0" layoutY="300.0" text="MENU:" textFill="#c65156" />
             <Label layoutX="20.0" layoutY="250.0" text="USER:" textFill="#c65156" />
-            <Hyperlink fx:id="addBookLink" layoutX="35.0" layoutY="400.0" onAction="#addBookAction" text="Manage Books" />
-            <Hyperlink fx:id="displayReviewsLink" layoutX="35.0" layoutY="425.0" onAction="#displayReviewsAction" text="Reviews" />
+            <Hyperlink layoutX="35.0" layoutY="400.0" onAction="#manageBooksAction" text="Manage Books" />
+            <Hyperlink layoutX="35.0" layoutY="425.0" onAction="#manageReviewsAction" text="Reviews" />
             <Label layoutX="20.0" layoutY="275.0" text="STATUS: " textFill="#c65156" />
-            <Hyperlink layoutX="35.0" layoutY="375.0" onAction="#addReaderAction" text="Reader Profiles" />
-            <Hyperlink layoutX="35.0" layoutY="350.0" onAction="#manageAdministratorAction" text="Admin Profiles" />
-            <Hyperlink onAction="#signOutAction" text="SIGN OUT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
+            <Hyperlink layoutX="35.0" layoutY="375.0" onAction="#manageReadersAction" text="Reader Profiles" />
+            <Hyperlink layoutX="35.0" layoutY="350.0" onAction="#manageAdminsAction" text="Admin Profiles" />
+            <Hyperlink fx:id="signOutButton" onAction="#signOutAction" text="SIGN OUT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
             <Hyperlink fx:id="exitButton" layoutX="144.0" layoutY="716.0" onAction="#exitAction" text="EXIT" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
             <Label layoutX="90.0" layoutY="275.0" text="Administrator" textFill="#6baddf" />
-            <Hyperlink fx:id="yourProfile" layoutX="35.0" layoutY="325.0" onAction="#editYourProfileAction" text="Your Profile" />
+            <Hyperlink layoutX="35.0" layoutY="325.0" onAction="#editYourProfileAction" text="Your Profile" />
             <Label fx:id="userLabel" layoutX="88.0" layoutY="250.0" textFill="#6baddf" />
          </children>
       </AnchorPane>
@@ -45,193 +34,11 @@
    <center>
       <AnchorPane prefHeight="761.0" prefWidth="807.0" style="-fx-background-color: #0d2054;" BorderPane.alignment="CENTER">
          <children>
-            <BorderPane fx:id="displayProfilePane" prefHeight="739.0" prefWidth="870.0" style="-fx-background-color: #6baddf;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <bottom>
-                  <Button fx:id="updateProfileButton" minWidth="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #0d2054;" text="Update Profile Informations" textFill="#6baddf" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets bottom="50.0" />
-                     </BorderPane.margin>
-                  </Button>
-               </bottom>
-               <center>
-                  <GridPane hgap="20.0" vgap="20.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="300.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" />
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField prefHeight="20.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <Label text="First Name:">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label text="Second Name:" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label text="Address:" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label text="e-mail:" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label text="Telehone:" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label text="Username:" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label text="Password:" GridPane.rowIndex="6">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label text="Repeat password:" GridPane.rowIndex="7">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="50.0" />
-                     </padding>
-                  </GridPane>
-               </center>
-               <top>
-                  <Label prefHeight="75.0" text="Edit Your Profile" textAlignment="JUSTIFY" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <BorderPane.margin>
-                        <Insets top="50.0" />
-                     </BorderPane.margin>
-                  </Label>
-               </top>
-               <left>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </left>
-               <right>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </right>
-            </BorderPane>
-            <AnchorPane fx:id="addBookPane" layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="1236.0" style="-fx-background-color: #6baddf;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <SplitPane fx:id="addBookSplitPane" dividerPositions="0.75" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <items>
-                        <fx:include fx:id="displayBooks" source="ManageBooks.fxml" />
-                        <AnchorPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0">
-                           <children>
-                              <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <tabs>
-                                  <Tab text="Add Book">
-                                    <content>
-                                      <AnchorPane>
-                                             <children>
-                                                <TextField fx:id="addBookTitle" layoutX="140.0" layoutY="56.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="65.0" layoutY="61.0" text="Title:" textFill="#0d2054" AnchorPane.leftAnchor="65.0" />
-                                                <Label layoutX="65.0" layoutY="101.0" text="Author:" textFill="#0d2054" AnchorPane.leftAnchor="65.0" />
-                                                <TextField fx:id="addBookAuthor" layoutX="140.0" layoutY="96.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="65.0" layoutY="141.0" text="Publisher:" textFill="#0d2054" AnchorPane.leftAnchor="65.0" />
-                                                <TextField fx:id="addBookPublisher" layoutX="140.0" layoutY="136.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <TextField fx:id="addBookYear" layoutX="455.0" layoutY="56.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="380.0" layoutY="61.0" text="Year:" textFill="#0d2054" />
-                                                <Label layoutX="380.0" layoutY="101.0" text="Pages:" textFill="#0d2054" />
-                                                <TextField fx:id="addBookPages" layoutX="455.0" layoutY="96.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="380.0" layoutY="141.0" text="Section:" textFill="#0d2054" />
-                                                <TextField fx:id="addBookSection" layoutX="455.0" layoutY="136.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Button layoutX="729.0" layoutY="84.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #0d2054;" text="ADD" textFill="#6baddf" />
-                                             </children>
-                                          </AnchorPane>
-                                    </content>
-                                  </Tab>
-                                  <Tab text="Remove Book">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" />
-                                    </content>
-                                  </Tab>
-                                    <Tab text="Give Book">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" />
-                                       </content>
-                                    </Tab>
-                                </tabs>
-                              </TabPane>
-                           </children>
-                        </AnchorPane>
-                     </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="addReaderPane" layoutX="10.0" layoutY="10.0" prefHeight="768.0" prefWidth="1236.0" style="-fx-background-color: #6baddf;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <SplitPane fx:id="addBookSplitPane1" dividerPositions="0.5" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <items>
-                        <fx:include fx:id="displayReaders" source="ManageReaders.fxml" />
-                        <AnchorPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0" prefWidth="1234.0" SplitPane.resizableWithParent="false">
-                           <children>
-                              <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <tabs>
-                                    <Tab text="Add Admin User">
-                                       <content>
-                                          <AnchorPane>
-                                             <children>
-                                                <TextField fx:id="addBookTitle2" layoutX="140.0" layoutY="56.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="65.0" layoutY="61.0" text="Title:" textFill="#0d2054" AnchorPane.leftAnchor="65.0" />
-                                                <Label layoutX="65.0" layoutY="101.0" text="Author:" textFill="#0d2054" AnchorPane.leftAnchor="65.0" />
-                                                <TextField fx:id="addBookAuthor2" layoutX="140.0" layoutY="96.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="65.0" layoutY="141.0" text="Publisher:" textFill="#0d2054" AnchorPane.leftAnchor="65.0" />
-                                                <TextField fx:id="addBookPublisher2" layoutX="140.0" layoutY="136.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <TextField fx:id="addBookYear2" layoutX="455.0" layoutY="56.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="380.0" layoutY="61.0" text="Year:" textFill="#0d2054" />
-                                                <Label layoutX="380.0" layoutY="101.0" text="Pages:" textFill="#0d2054" />
-                                                <TextField fx:id="addBookPages2" layoutX="455.0" layoutY="96.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Label layoutX="380.0" layoutY="141.0" text="Section:" textFill="#0d2054" />
-                                                <TextField fx:id="addBookSection2" layoutX="455.0" layoutY="136.0" prefHeight="10.0" prefWidth="200.0" />
-                                                <Button layoutX="729.0" layoutY="84.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #0d2054;" text="ADD" textFill="#6baddf" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </Tab>
-                                    <Tab text="Remove Admin User">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" />
-                                       </content>
-                                    </Tab>
-                                 </tabs>
-                              </TabPane>
-                           </children>
-                        </AnchorPane>
-                     </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
+            <fx:include fx:id="manageBooks" source="ManageBooks.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include fx:id="manageReaders" source="ManageReaders.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include fx:id="updateProfile" source="UpdateProfile.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include fx:id="manageAdmins" source="ManageAdmins.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+<!--            <fx:include fx:id="manageReviews" source="ManageReaders.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />-->
          </children>
       </AnchorPane>
    </center>

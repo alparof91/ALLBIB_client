@@ -124,7 +124,7 @@ public class LoginController{
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fileNameFXML));
             Parent windowParent = loader.load();
             AdminWindowController adminWindowController = loader.getController();
-            adminWindowController.getInfo(username);
+            adminWindowController.setUser(username);
             stage.setScene(new Scene(windowParent, width, height));
             stage.show();
         } catch (IOException e) {

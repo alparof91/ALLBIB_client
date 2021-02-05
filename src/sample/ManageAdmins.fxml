@@ -12,19 +12,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="displayReadersTablePane" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManageReadersController">
+<AnchorPane fx:id="displayReadersTablePane" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManageAdminsController">
    <children>
       <SplitPane fx:id="addReaderSplitPane" dividerPositions="0.75" layoutX="20.0" layoutY="20.0" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <TableView fx:id="readersTable">
+            <TableView fx:id="adminsTable">
                <columns>
-                  <TableColumn fx:id="readerID" prefWidth="30.0" text="ID" />
-                  <TableColumn fx:id="readerFirstName" prefWidth="200.0" text="First Name" />
-                  <TableColumn fx:id="readerSecondName" prefWidth="200.0" text="Second Name" />
-                  <TableColumn fx:id="readerAddress" prefWidth="200.0" text="Address" />
-                  <TableColumn fx:id="readerEmail" minWidth="0.0" prefWidth="200.0" text="e-mail" />
-                  <TableColumn fx:id="readerTelephone" prefWidth="200.0" text="Phone" />
-                  <TableColumn fx:id="readerUser" prefWidth="200.0" text="User" />
+                  <TableColumn fx:id="adminID" prefWidth="30.0" text="ID" />
+                  <TableColumn fx:id="adminFirstName" prefWidth="200.0" text="First Name" />
+                  <TableColumn fx:id="adminSecondName" prefWidth="200.0" text="Second Name" />
+                  <TableColumn fx:id="adminAddress" prefWidth="200.0" text="Address" />
+                  <TableColumn fx:id="adminEmail" minWidth="0.0" prefWidth="200.0" text="e-mail" />
+                  <TableColumn fx:id="adminTelephone" prefWidth="200.0" text="Phone" />
+                  <TableColumn fx:id="adminUser" prefWidth="200.0" text="User" />
                </columns>
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -32,7 +32,7 @@
             </TableView>
             <TabPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
-                  <Tab text="Add Reader">
+                  <Tab text="Add Admin">
                      <content>
                         <AnchorPane>
                            <children>
@@ -57,7 +57,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="Remove Reader">
+                  <Tab text="Remove Admin">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0">
                            <children>

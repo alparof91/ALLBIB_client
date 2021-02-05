@@ -1,25 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManageBooksController">
+<AnchorPane prefHeight="786.0" prefWidth="1024.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManageBooksController">
    <children>
-      <TableView fx:id="booksTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columns>
-            <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID" />
-            <TableColumn fx:id="titleColumn" prefWidth="220.0" text="Title" />
-            <TableColumn fx:id="authorColumn" prefWidth="120.0" text="Author" />
-            <TableColumn fx:id="publisherColumn" text="Publisher" />
-            <TableColumn fx:id="yearColumn" prefWidth="60.0" text="Year" />
-            <TableColumn fx:id="pagesColumn" prefWidth="60.0" text="Pages" />
-            <TableColumn fx:id="sectionColumn" minWidth="0.0" prefWidth="70.0" text="Section" />
-            <TableColumn fx:id="availabilityColumn" prefWidth="90.0" text="Availability" />
-            <TableColumn fx:id="atReaderColumn" minWidth="0.0" prefWidth="60.0" text="At Reader" />
-            <TableColumn fx:id="untilColumn" prefWidth="60.0" text="Until" />
-        </columns>
-      </TableView>
+       <SplitPane fx:id="addBookSplitPane" dividerPositions="0.75" layoutX="20.0" layoutY="20.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <TableView fx:id="booksTable">
+              <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID" />
+                  <TableColumn fx:id="titleColumn" prefWidth="220.0" text="Title" />
+                  <TableColumn fx:id="authorColumn" prefWidth="120.0" text="Author" />
+                  <TableColumn fx:id="publisherColumn" text="Publisher" />
+                  <TableColumn fx:id="yearColumn" prefWidth="60.0" text="Year" />
+                  <TableColumn fx:id="pagesColumn" prefWidth="60.0" text="Pages" />
+                  <TableColumn fx:id="sectionColumn" minWidth="0.0" prefWidth="70.0" text="Section" />
+                  <TableColumn fx:id="availabilityColumn" prefWidth="90.0" text="Availability" />
+                  <TableColumn fx:id="atReaderColumn" minWidth="0.0" prefWidth="60.0" text="At Reader" />
+                  <TableColumn fx:id="untilColumn" prefWidth="60.0" text="Until" />
+              </columns>
+            </TableView>
+            <TabPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Add Book">
+                     <content>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Pane>
+                                 <children>
+                                    <TextField fx:id="addBookTitle" layoutX="108.0" layoutY="40.0" prefHeight="10.0" prefWidth="200.0" />
+                                    <Label layoutX="33.0" layoutY="45.0" text="Title:" textFill="#0d2054" />
+                                    <Label layoutX="33.0" layoutY="85.0" text="Author:" textFill="#0d2054" />
+                                    <TextField fx:id="addBookAuthor" layoutX="108.0" layoutY="80.0" prefHeight="10.0" prefWidth="200.0" />
+                                    <Label layoutX="33.0" layoutY="125.0" text="Publisher:" textFill="#0d2054" />
+                                    <TextField fx:id="addBookPublisher" layoutX="108.0" layoutY="120.0" prefHeight="10.0" prefWidth="200.0" />
+                                    <TextField fx:id="addBookYear" layoutX="423.0" layoutY="40.0" prefHeight="10.0" prefWidth="200.0" />
+                                    <Label layoutX="348.0" layoutY="45.0" text="Year:" textFill="#0d2054" />
+                                    <Label layoutX="348.0" layoutY="85.0" text="Pages:" textFill="#0d2054" />
+                                    <TextField fx:id="addBookPages" layoutX="423.0" layoutY="80.0" prefHeight="10.0" prefWidth="200.0" />
+                                    <Label layoutX="348.0" layoutY="125.0" text="Section:" textFill="#0d2054" />
+                                    <TextField fx:id="addBookSection" layoutX="423.0" layoutY="120.0" prefHeight="10.0" prefWidth="200.0" />
+                                    <Button layoutX="657.0" layoutY="68.0" mnemonicParsing="false" onAction="#addBookButtonAction" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #0d2054;" text="ADD" textFill="#6baddf" />
+                                    <Label fx:id="addMessageLabel" layoutX="252.0" layoutY="163.0" prefHeight="16.0" prefWidth="226.0" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets right="50.0" />
+                                 </padding>
+                              </Pane>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </HBox>
+                     </content>
+                  </Tab>
+                  <Tab text="Remove Book">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="removeBookId" layoutX="90.0" layoutY="44.0" />
+                              <Label layoutX="40.0" layoutY="49.0" prefHeight="16.0" prefWidth="26.0" text="Id:" />
+                              <Button layoutX="310.0" layoutY="32.0" mnemonicParsing="false" onAction="#removeBookButtonAction" prefHeight="50.0" prefWidth="91.0" style="-fx-background-color: #0d2054;" text="REMOVE" textFill="#6baddf" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Give Book">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>
