@@ -1,32 +1,26 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sample.entity.User;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class AdminWindowController implements Initializable{
-//public class AdminWindowController {
+public class AdminWindowController {
 
     @FXML
-    ManageBooksController manageBooksController;
-
-    @FXML
-    ManageReadersController manageReadersController;
-
-    @FXML
-    private AnchorPane displayProfilePane;
+    private BorderPane displayProfilePane;
 
     @FXML
     private AnchorPane addBookSplitPaneDown;
@@ -80,6 +74,9 @@ public class AdminWindowController implements Initializable{
     private Label userLabel;
 
     @FXML
+    private Hyperlink exitButton;
+
+    @FXML
     public void editYourProfileAction(){
         displayProfilePane.toFront();
     }
@@ -97,11 +94,11 @@ public class AdminWindowController implements Initializable{
     }
 
     @FXML
-    public void addAdministratorAction() {
+    public void manageAdministratorAction() {
         addReaderPane.toFront();
         try {
-            Node displayReadersPaneChildren = FXMLLoader.load(getClass().getResource("ManageBooks.fxml"));
-            addBookSplitPaneDown.getChildren().setAll(displayReadersPaneChildren);
+            Node displayReadersPaneChildren = FXMLLoader.load(getClass().getResource("ManageReaders.fxml"));
+//            addBookSplitPaneDown.getChildren().setAll(displayReadersPaneChildren);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,42 +107,38 @@ public class AdminWindowController implements Initializable{
     @FXML
     public void displayReviewsAction() {
         addReaderPane.toFront();
-        try {
-            Node displayReadersPaneChildren = FXMLLoader.load(getClass().getResource("ManageBooks.fxml"));
-            addBookSplitPaneDown.getChildren().setAll(displayReadersPaneChildren);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Node displayReadersPaneChildren = FXMLLoader.load(getClass().getResource("ManageBooks.fxml"));
+//            addBookSplitPaneDown.getChildren().setAll(displayReadersPaneChildren);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @FXML
     public void signOutAction() {
-        addReaderPane.toFront();
+        Stage loginStage = new Stage();
+        loginStage.setTitle("Welcome to ALLBIB");
         try {
-            Node displayReadersPaneChildren = FXMLLoader.load(getClass().getResource("ManageBooks.fxml"));
-            addBookSplitPaneDown.getChildren().setAll(displayReadersPaneChildren);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent windowParent = loader.load();
+            loginStage.setScene(new Scene(windowParent, 700, 400));
+            loginStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Stage stageTheLabelBelongs = (Stage) exitButton.getScene().getWindow();
+        stageTheLabelBelongs.close();
     }
 
     @FXML
     public void exitAction() {
-        addReaderPane.toFront();
-        try {
-            Node displayReadersPaneChildren = FXMLLoader.load(getClass().getResource("ManageBooks.fxml"));
-            addBookSplitPaneDown.getChildren().setAll(displayReadersPaneChildren);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+        Stage stageTheLabelBelongs = (Stage) exitButton.getScene().getWindow();
+        stageTheLabelBelongs.close();
+        System.exit(0);
     }
 
     public void getInfo(String username) {
         userLabel.setText(username);
-//        System.out.println(username);
     }
 }

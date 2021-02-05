@@ -17,9 +17,8 @@
             <TableColumn fx:id="pagesColumn" prefWidth="60.0" text="Pages" />
             <TableColumn fx:id="sectionColumn" minWidth="0.0" prefWidth="70.0" text="Section" />
             <TableColumn fx:id="availabilityColumn" prefWidth="90.0" text="Availability" />
-            <TableColumn fx:id="atReaderColumn" minWidth="0.0" prefWidth="0.0" text="At Reader" />
+            <TableColumn fx:id="atReaderColumn" minWidth="0.0" prefWidth="60.0" text="At Reader" />
             <TableColumn fx:id="untilColumn" prefWidth="60.0" text="Until" />
-            <TableColumn fx:id="deleteColumn" prefWidth="60.0" text="Delete" />
         </columns>
       </TableView>
    </children>

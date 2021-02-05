@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class LoginController {
+public class LoginController{
 
     ObservableList<String> titleList = FXCollections.observableArrayList("Admin","Reader");
 

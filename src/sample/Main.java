@@ -14,7 +14,6 @@ public class Main extends Application {
         primaryStage.setTitle("Welcome to ALLBIB");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.show();
-
     }
 
 
