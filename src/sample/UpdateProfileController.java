@@ -6,8 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import sample.entity.Reader;
 import sample.entity.User;
-import sample.entity.Readers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,7 +70,7 @@ public class UpdateProfileController implements Initializable {
             System.out.println("Sending to server:\ncommand: addUser,\ndata: " + payload);
             sendToServer("modifyUser", payload);
 
-            Readers reader = new Readers(firstNameField.getText(), secondNameField.getText(), addressField.getText(), emailField.getText(), phoneField.getText(), user);
+            Reader reader = new Reader(firstNameField.getText(), secondNameField.getText(), addressField.getText(), emailField.getText(), phoneField.getText(), user);
             payload = new Gson().toJson(reader);
             System.out.println("Sending to server:\ncommand: addReader,\ndata: " + payload);
             sendToServer("addReader", payload);

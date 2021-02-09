@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="books")
-public class Books implements Serializable {
+public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,16 +32,13 @@ public class Books implements Serializable {
 
 	private String availability;
 
-	@Column(name="id_reader")
+	@Column(name="readers_id_reader")
 	private int idReader;
 
-	@Column(name="return_date")
-	private String returnDate;
-
-	public Books() {
+	public Book() {
 	}
 
-	public Books(int idBook, String title, String author, String publisher, String year, int pages, String section, String availability, int idReader, String returnDate) {
+	public Book(int idBook, String title, String author, String publisher, String year, int pages, String section, String availability, int idReader) {
 		this.idBook = idBook;
 		this.title = title;
 		this.author = author;
@@ -51,10 +48,9 @@ public class Books implements Serializable {
 		this.section = section;
 		this.availability = availability;
 		this.idReader = idReader;
-		this.returnDate = returnDate;
 	}
 
-	public Books(String title, String author, String publisher, String year, int pages, String section, String availability) {
+	public Book(String title, String author, String publisher, String year, int pages, String section, String availability) {
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
@@ -136,17 +132,9 @@ public class Books implements Serializable {
 		this.idReader = idReader;
 	}
 
-	public String getReturnDate() {
-		return returnDate;
-	}
-
-	public void setReturnDate(String returnDate) {
-		this.returnDate = returnDate;
-	}
-
 	@Override
 	public String toString() {
-		return "Books{" +
+		return "Book{" +
 				"idBook=" + idBook +
 				", title='" + title + '\'' +
 				", author='" + author + '\'' +
@@ -156,7 +144,6 @@ public class Books implements Serializable {
 				", section='" + section + '\'' +
 				", availability='" + availability + '\'' +
 				", idReader=" + idReader +
-				", returnDate='" + returnDate + '\'' +
 				'}';
 	}
 }

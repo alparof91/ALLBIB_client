@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.entity.Admins;
+import sample.entity.Admin;
 import sample.entity.User;
 
 import java.lang.reflect.Type;
@@ -27,30 +27,30 @@ public class ManageAdminsController implements Initializable {
     public static final int PORT = 9001;
 
     @FXML
-    private TableView<Admins> adminsTable;
+    private TableView<Admin> adminTable;
 
     @FXML
-    private TableColumn<Admins, Integer> adminID;
+    private TableColumn<Admin, Integer> adminID;
 
     @FXML
-    private TableColumn<Admins, String> adminFirstName;
+    private TableColumn<Admin, String> adminFirstName;
 
     @FXML
-    private TableColumn<Admins, String> adminSecondName;
+    private TableColumn<Admin, String> adminSecondName;
 
     @FXML
-    private TableColumn<Admins, String> adminAddress;
+    private TableColumn<Admin, String> adminAddress;
 
     @FXML
-    private TableColumn<Admins, String> adminEmail;
+    private TableColumn<Admin, String> adminEmail;
 
     @FXML
-    private TableColumn<Admins, String> adminTelephone;
+    private TableColumn<Admin, String> adminTelephone;
 
     @FXML
-    private TableColumn<Admins, User> adminUser;
+    private TableColumn<Admin, User> adminUser;
 
-    ObservableList<Admins> adminsTableList = FXCollections.observableArrayList();
+    ObservableList<Admin> adminTableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,10 +71,10 @@ public class ManageAdminsController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
             Gson gson = new Gson();
-            //Admins[] admins = gson.fromJson(serverResponse,Admins[].class);
-            Type collectionType = new TypeToken<Collection<Admins>>(){}.getType();
-            Collection<Admins> admins = gson.fromJson(serverResponse, collectionType);
-            adminsTableList.addAll(admins);
+            //Admin[] admins = gson.fromJson(serverResponse,Admin[].class);
+            Type collectionType = new TypeToken<Collection<Admin>>(){}.getType();
+            Collection<Admin> admin = gson.fromJson(serverResponse, collectionType);
+            adminTableList.addAll(admin);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,6 +87,6 @@ public class ManageAdminsController implements Initializable {
         adminTelephone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         adminUser.setCellValueFactory(new PropertyValueFactory<>("user"));
 
-        adminsTable.setItems(adminsTableList);
+        adminTable.setItems(adminTableList);
     }
 }

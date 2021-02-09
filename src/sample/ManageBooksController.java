@@ -11,7 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.entity.Books;
+import sample.entity.Book;
 
 import java.lang.reflect.Type;
 import java.net.URL;
@@ -51,7 +51,7 @@ public class ManageBooksController implements Initializable {
     @FXML
     private Label addMessageLabel;
 
-    // Add New Book
+    // Remove Book by ID
     // ------------------------------------------------
 
     @FXML
@@ -60,39 +60,39 @@ public class ManageBooksController implements Initializable {
     // Table
     // ------------------------------------------------
     @FXML
-    private TableView<Books> booksTable;
+    private TableView<Book> booksTable;
 
     @FXML
-    private TableColumn<Books, Integer> idColumn;
+    private TableColumn<Book, Integer> idColumn;
 
     @FXML
-    private TableColumn <Books, String> titleColumn;
+    private TableColumn <Book, String> titleColumn;
 
     @FXML
-    private TableColumn <Books, String> authorColumn;
+    private TableColumn <Book, String> authorColumn;
 
     @FXML
-    private TableColumn <Books, String> publisherColumn;
+    private TableColumn <Book, String> publisherColumn;
 
     @FXML
-    private TableColumn <Books, String> yearColumn;
+    private TableColumn <Book, String> yearColumn;
 
     @FXML
-    private TableColumn <Books, Integer> pagesColumn;
+    private TableColumn <Book, Integer> pagesColumn;
 
     @FXML
-    private TableColumn <Books, String> sectionColumn;
+    private TableColumn <Book, String> sectionColumn;
 
     @FXML
-    private TableColumn <Books, String> availabilityColumn;
+    private TableColumn <Book, String> availabilityColumn;
 
     @FXML
-    private TableColumn <Books, Integer> atReaderColumn;
+    private TableColumn <Book, Integer> atReaderColumn;
 
     @FXML
-    private TableColumn <Books, Date> untilColumn;
+    private TableColumn <Book, Date> untilColumn;
 
-    ObservableList<Books> booksTableList = FXCollections.observableArrayList();
+    ObservableList<Book> bookTableList = FXCollections.observableArrayList();
 
     @FXML
     private void addBookButtonAction(){
@@ -100,12 +100,12 @@ public class ManageBooksController implements Initializable {
             System.out.println("All the fields are needed!");
             addMessageLabel.setText("There are empty fields! Try again!");
         } else {
-            Books book = new Books(addBookTitle.getText(),addBookAuthor.getText(),addBookPublisher.getText(),addBookYear.getText(),Integer.parseInt(addBookPages.getText()),addBookSection.getText(),"yes");
+            Book book = new Book(addBookTitle.getText(),addBookAuthor.getText(),addBookPublisher.getText(),addBookYear.getText(),Integer.parseInt(addBookPages.getText()),addBookSection.getText(),"yes");
             String payload = new Gson().toJson(book);
             System.out.println("Adding new book to database...");
             sendToServer("addBook", payload);
             getDataFromServer();
-            booksTable.setItems(booksTableList);
+            booksTable.setItems(bookTableList);
         }
     }
 
@@ -114,7 +114,7 @@ public class ManageBooksController implements Initializable {
         sendToServer("removeBook", removeBookId.getText());
         System.out.println("Deleting book with ID:" + removeBookId.getText());
         getDataFromServer();
-        booksTable.setItems(booksTableList);
+        booksTable.setItems(bookTableList);
     }
 
     private void sendToServer(String command, String payload) {
@@ -155,11 +155,11 @@ public class ManageBooksController implements Initializable {
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
             Gson gson = new Gson();
-            //Books[] books = gson.fromJson(serverResponse,Books[].class);
-            Type collectionType = new TypeToken<Collection<Books>>(){}.getType();
-            Collection<Books> books = gson.fromJson(serverResponse, collectionType);
-            booksTableList.clear();
-            booksTableList.addAll(books);
+            //Book[] books = gson.fromJson(serverResponse,Book[].class);
+            Type collectionType = new TypeToken<Collection<Book>>(){}.getType();
+            Collection<Book> books = gson.fromJson(serverResponse, collectionType);
+            bookTableList.clear();
+            bookTableList.addAll(books);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -182,6 +182,6 @@ public class ManageBooksController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         getDataFromServer();
         initCols();
-        booksTable.setItems(booksTableList);
+        booksTable.setItems(bookTableList);
     }
 }

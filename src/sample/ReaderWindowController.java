@@ -13,13 +13,13 @@ import sample.entity.User;
 
 import java.io.IOException;
 
-public class AdminWindowController {
+public class ReaderWindowController {
 
     @FXML
     private BorderPane updateProfile;
 
     @FXML
-    private AnchorPane manageBooks;
+    private AnchorPane books;
 
     @FXML
     private AnchorPane manageReaders;
@@ -45,7 +45,7 @@ public class AdminWindowController {
     }
 
     @FXML
-    public void manageBooksAction() { manageBooks.toFront(); }
+    public void manageBooksAction() { books.toFront(); }
 
     @FXML
     public void manageReadersAction() { manageReaders.toFront(); }

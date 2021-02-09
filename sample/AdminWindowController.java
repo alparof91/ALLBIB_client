@@ -97,7 +97,7 @@ public class AdminWindowController implements Initializable {
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
             Gson gson = new Gson();
-            //Books[] books = gson.fromJson(serverResponse,Books[].class);
+            //Book[] books = gson.fromJson(serverResponse,Book[].class);
             Type collectionType = new TypeToken<Collection<Books>>(){}.getType();
             Collection<Books> books = gson.fromJson(serverResponse, collectionType);
             Iterator<Books> iterator = books.iterator();
@@ -162,7 +162,7 @@ public class AdminWindowController implements Initializable {
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
             Gson gson = new Gson();
-            //Readers[] readers = gson.fromJson(serverResponse,Books[].class);
+            //Reader[] readers = gson.fromJson(serverResponse,Book[].class);
             Type collectionType = new TypeToken<Collection<Books>>(){}.getType();
             Collection<Books> books = gson.fromJson(serverResponse, collectionType);
             Iterator<Books> iterator = books.iterator();

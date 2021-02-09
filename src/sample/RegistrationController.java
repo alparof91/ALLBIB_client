@@ -8,8 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import sample.entity.Reader;
 import sample.entity.User;
-import sample.entity.Readers;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
@@ -85,7 +85,7 @@ public class RegistrationController {
             System.out.println("Sending to server:\ncommand: addUser,\ndata: " + payload);
             sendToServer("addUser",payload);
 
-            Readers reader = new Readers(firstNameField.getText(), secondNameField.getText(), addressField.getText(), emailField.getText(), phoneField.getText(), user);
+            Reader reader = new Reader(firstNameField.getText(), secondNameField.getText(), addressField.getText(), emailField.getText(), phoneField.getText(), user);
             payload = new Gson().toJson(reader);
             System.out.println("Sending to server:\ncommand: addReader,\ndata: " + payload);
             sendToServer("addReader",payload);

@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="readers")
-public class Readers implements Serializable {
+public class Reader implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,10 +33,10 @@ public class Readers implements Serializable {
 	@OneToOne
 	private User user;
 
-	public Readers() {
+	public Reader() {
 	}
 
-	public Readers(String firstName, String secondName, String address, String email, String phone, User user) {
+	public Reader(String firstName, String secondName, String address, String email, String phone, User user) {
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.address = address;

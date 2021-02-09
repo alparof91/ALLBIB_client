@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.entity.Readers;
+import sample.entity.Reader;
 import sample.entity.User;
 
 import java.lang.reflect.Type;
@@ -27,30 +27,30 @@ public class ManageReadersController implements Initializable {
     public static final int PORT = 9001;
 
     @FXML
-    private TableView<Readers> readersTable;
+    private TableView<Reader> readersTable;
 
     @FXML
-    private TableColumn<Readers, Integer> readerID;
+    private TableColumn<Reader, Integer> readerID;
 
     @FXML
-    private TableColumn<Readers, String> readerFirstName;
+    private TableColumn<Reader, String> readerFirstName;
 
     @FXML
-    private TableColumn<Readers, String> readerSecondName;
+    private TableColumn<Reader, String> readerSecondName;
 
     @FXML
-    private TableColumn<Readers, String> readerAddress;
+    private TableColumn<Reader, String> readerAddress;
 
     @FXML
-    private TableColumn<Readers, String> readerEmail;
+    private TableColumn<Reader, String> readerEmail;
 
     @FXML
-    private TableColumn<Readers, String> readerTelephone;
+    private TableColumn<Reader, String> readerTelephone;
 
     @FXML
-    private TableColumn<Readers, User> readerUser;
+    private TableColumn<Reader, User> readerUser;
 
-    ObservableList<Readers> readersTableList = FXCollections.observableArrayList();
+    ObservableList<Reader> readerTableList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -71,10 +71,10 @@ public class ManageReadersController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
             Gson gson = new Gson();
-            //Readers[] readers = gson.fromJson(serverResponse,Readers[].class);
-            Type collectionType = new TypeToken<Collection<Readers>>(){}.getType();
-            Collection<Readers> readers = gson.fromJson(serverResponse, collectionType);
-            readersTableList.addAll(readers);
+            //Reader[] readers = gson.fromJson(serverResponse,Reader[].class);
+            Type collectionType = new TypeToken<Collection<Reader>>(){}.getType();
+            Collection<Reader> readers = gson.fromJson(serverResponse, collectionType);
+            readerTableList.addAll(readers);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,6 +87,6 @@ public class ManageReadersController implements Initializable {
         readerTelephone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         readerUser.setCellValueFactory(new PropertyValueFactory<>("user"));
 
-        readersTable.setItems(readersTableList);
+        readersTable.setItems(readerTableList);
     }
 }

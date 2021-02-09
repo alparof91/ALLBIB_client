@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="admins")
-public class Admins implements Serializable {
+public class Admin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,10 +33,10 @@ public class Admins implements Serializable {
 	@OneToOne
 	private User user;
 
-	public Admins() {
+	public Admin() {
 	}
 
-	public Admins(String firstName, String secondName, String address, String email, String phone, User user) {
+	public Admin(String firstName, String secondName, String address, String email, String phone, User user) {
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.address = address;
@@ -103,7 +103,7 @@ public class Admins implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Readers{" +
+		return "Reader{" +
 				"idReader=" + idAdmin +
 				", firstName='" + firstName + '\'' +
 				", secondName='" + secondName + '\'' +

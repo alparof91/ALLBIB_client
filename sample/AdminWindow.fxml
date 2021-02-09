@@ -58,7 +58,7 @@
          </children></AnchorPane>
       <AnchorPane style="-fx-background-color: #0d2054;">
          <children>
-            <Button fx:id="booksButton" layoutY="200.0" mnemonicParsing="false" onAction="#booksButtonOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Display books" textFill="#bababa" />
+            <Button fx:id="booksButton" layoutY="200.0" mnemonicParsing="false" onAction="#booksButtonOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Display book" textFill="#bababa" />
             <Button fx:id="readersButton" layoutY="325.0" mnemonicParsing="false" onAction="#readersButtonOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Display all readers" textFill="#bababa" />
             <Button fx:id="addBook" layoutY="225.0" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #0d2054;" text="Add new book" textFill="#bababa" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="12.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
