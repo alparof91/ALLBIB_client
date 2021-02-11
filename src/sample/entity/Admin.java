@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 /**
- * The persistent class for the readers database table.
+ * The persistent class for the admins database table.
  *
  */
 @Entity
@@ -45,11 +45,15 @@ public class Admin implements Serializable {
 		this.user = user;
 	}
 
-	public int getIdReader() {
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public Integer getIdAdmin() {
 		return idAdmin;
 	}
 
-	public void setIdReader(int idReader) {
+	public void setIdAdmin(Integer idAdmin) {
 		this.idAdmin = idAdmin;
 	}
 

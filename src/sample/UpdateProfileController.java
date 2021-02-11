@@ -66,15 +66,15 @@ public class UpdateProfileController implements Initializable {
             updateMessageLabel.setText("Different password fields! Try again!");
             System.out.println("Password repeat error");
         } else {
-            User user = new User(userField.getText(), passwordField.getText());
+            User user = new User(userField.getText(), passwordField.getText(),"reader");
             String payload = new Gson().toJson(user);
-            System.out.println("Sending to server:\ncommand: addUser,\ndata: " + payload);
-            sendToServer("modifyUser", payload);
+            System.out.println("Sending to server:\ncommand: updateUser,\ndata: " + payload);
+            sendToServer("updateUser", payload);
 
             Reader reader = new Reader(firstNameField.getText(), secondNameField.getText(), addressField.getText(), emailField.getText(), phoneField.getText(), user);
             payload = new Gson().toJson(reader);
             System.out.println("Sending to server:\ncommand: addReader,\ndata: " + payload);
-            sendToServer("addReader", payload);
+            sendToServer("updateReader", payload);
 
             System.out.println(userField.getText() + " updated his profile. Back to login!");
         }

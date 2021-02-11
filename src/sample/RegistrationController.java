@@ -80,7 +80,7 @@ public class RegistrationController {
             System.out.println("Password repeat error");
         }
         else {
-            User user = new User(userField.getText(), passwordField.getText());
+            User user = new User(userField.getText(), passwordField.getText(), "user");
             String payload = new Gson().toJson(user);
             System.out.println("Sending to server:\ncommand: addUser,\ndata: " + payload);
             sendToServer("addUser",payload);

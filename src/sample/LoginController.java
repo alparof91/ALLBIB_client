@@ -18,8 +18,6 @@ import java.util.concurrent.Future;
 
 public class LoginController{
 
-    ObservableList<String> titleList = FXCollections.observableArrayList("Admin","Reader");
-
     public static String serverResponse;
     public static final String HOSTNAME = "localhost";
     public static final int PORT = 9001;
@@ -31,9 +29,6 @@ public class LoginController{
     private PasswordField passwordField;
 
     @FXML
-    private ChoiceBox<String> titleChoiceBox;
-
-    @FXML
     private Label loginMessageLabel;
 
     @FXML
@@ -41,8 +36,6 @@ public class LoginController{
 
     @FXML
     private void initialize(){
-        titleChoiceBox.setItems(titleList);
-        titleChoiceBox.setValue("Reader");
     }
 
     //for testing
@@ -52,21 +45,12 @@ public class LoginController{
         sceneSwitcher("Registration.fxml", 700, 500);
     }
 
-//    @FXML
-//    public void loginButtonOnAction(){
-//        User user = new User("raduvasile", "123456");
-//        Stage adminStage = new Stage();
-//        stageSwitcher(adminStage, 1024, 768,"ALLBIB Administrator Window", "ReaderWindow.fxml",  user.getUsername());
-//        Stage stageTheLabelBelongs = (Stage) loginButton.getScene().getWindow();
-//        stageTheLabelBelongs.close();
-//    }
-
     @FXML
     public void loginButtonOnAction(){
         //based on server_client_example
         ExecutorService es = Executors.newCachedThreadPool();
 
-        User user = new User(userField.getText(), passwordField.getText());
+        User user = new User(userField.getText(), passwordField.getText(), "reader");
         String payload = new Gson().toJson(user);
         String command = "login";
 
@@ -82,23 +66,17 @@ public class LoginController{
                 System.out.println("Not connected to server!");
                 loginMessageLabel.setText("Not connected to server!");
             }
-            if (serverResponse.equals("Valid credentials")) {
-                switch (titleChoiceBox.getValue()) {
-                    case "Admin": {
-                        Stage adminStage =new Stage();
-                        stageSwitcher(adminStage, 1024, 768,"ALLBIB Administrator Window", "AdminWindow.fxml",  user);
-                        Stage stageTheLabelBelongs = (Stage) loginButton.getScene().getWindow();
-                        stageTheLabelBelongs.close();
-                        break;
-                    }
-                    case "Reader": {
-                        Stage adminStage =new Stage();
-                        stageSwitcher(adminStage, 1024, 768,"ALLBIB Desktop Application", "ReaderWindow.fxml",  user);
-                        Stage stageTheLabelBelongs = (Stage) loginButton.getScene().getWindow();
-                        stageTheLabelBelongs.close();
-                        break;
-                    }
-                }
+            else if (serverResponse.equals("admin")) {
+                Stage adminStage =new Stage();
+                stageSwitcher(adminStage, 1024, 768,"ALLBIB Administrator Window", "AdminWindow.fxml",  user);
+                Stage stageTheLabelBelongs = (Stage) loginButton.getScene().getWindow();
+                stageTheLabelBelongs.close();
+            }
+            else if (serverResponse.equals("reader")) {
+                Stage adminStage =new Stage();
+                stageSwitcher(adminStage, 1024, 768,"ALLBIB Desktop Application", "ReaderWindow.fxml",  user);
+                Stage stageTheLabelBelongs = (Stage) loginButton.getScene().getWindow();
+                stageTheLabelBelongs.close();
             }
             else {
                 loginMessageLabel.setText("Invalid credentials! Try again!");

@@ -16,9 +16,6 @@ import java.io.IOException;
 public class AdminWindowController {
 
     @FXML
-    private BorderPane updateProfile;
-
-    @FXML
     private AnchorPane manageBooks;
 
     @FXML
@@ -41,11 +38,6 @@ public class AdminWindowController {
 
     @FXML
     private Hyperlink exitButton;
-
-    @FXML
-    public void editYourProfileAction(){
-        updateProfile.toFront();
-    }
 
     @FXML
     public void manageBooksAction() { manageBooks.toFront(); }

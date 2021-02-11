@@ -36,23 +36,23 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <TextField fx:id="addBookTitle2" layoutX="159.0" layoutY="38.0" prefHeight="10.0" prefWidth="200.0" />
-                              <Label layoutX="55.0" layoutY="43.0" text="First Name:" textFill="#0d2054" AnchorPane.leftAnchor="55.0" />
-                              <Label layoutX="55.0" layoutY="83.0" text="Second Name:" textFill="#0d2054" AnchorPane.leftAnchor="55.0" />
-                              <TextField fx:id="addBookAuthor2" layoutX="159.0" layoutY="78.0" prefHeight="10.0" prefWidth="200.0" />
-                              <Label layoutX="55.0" layoutY="123.0" text="Address:" textFill="#0d2054" AnchorPane.leftAnchor="55.0" />
-                              <TextField fx:id="addBookPublisher2" layoutX="159.0" layoutY="118.0" prefHeight="10.0" prefWidth="200.0" />
-                              <TextField fx:id="addBookYear2" layoutX="159.0" layoutY="159.0" prefHeight="10.0" prefWidth="200.0" />
-                              <Label layoutX="55.0" layoutY="164.0" text="Email:" textFill="#0d2054" />
-                              <Label layoutX="399.0" layoutY="43.0" text="Phone number:" textFill="#0d2054" />
-                              <TextField fx:id="addBookPages2" layoutX="528.0" layoutY="33.0" prefHeight="10.0" prefWidth="200.0" />
-                              <Label layoutX="399.0" layoutY="83.0" text="Username:" textFill="#0d2054" />
-                              <TextField fx:id="addBookSection2" layoutX="528.0" layoutY="73.0" prefHeight="10.0" prefWidth="200.0" />
-                              <Button layoutX="802.0" layoutY="84.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #0d2054;" text="ADD" textFill="#6baddf" />
-                              <Label layoutX="399.0" layoutY="123.0" text="Password:" textFill="#0d2054" />
-                              <Label layoutX="399.0" layoutY="164.0" text="Repeat password:" textFill="#0d2054" />
-                              <PasswordField layoutX="528.0" layoutY="118.0" prefHeight="26.0" prefWidth="200.0" />
-                              <PasswordField layoutX="528.0" layoutY="159.0" prefHeight="26.0" prefWidth="200.0" />
+                              <TextField fx:id="addBookTitle2" layoutX="133.0" layoutY="38.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="29.0" layoutY="43.0" text="First Name:" AnchorPane.leftAnchor="29.0" />
+                              <Label layoutX="29.0" layoutY="83.0" text="Second Name:" AnchorPane.leftAnchor="29.0" />
+                              <TextField fx:id="addBookAuthor2" layoutX="133.0" layoutY="78.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="29.0" layoutY="123.0" text="Address:" AnchorPane.leftAnchor="29.0" />
+                              <TextField fx:id="addBookPublisher2" layoutX="133.0" layoutY="118.0" prefHeight="10.0" prefWidth="200.0" />
+                              <TextField fx:id="addBookYear2" layoutX="133.0" layoutY="159.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="29.0" layoutY="164.0" text="Email:" />
+                              <Label layoutX="351.0" layoutY="43.0" text="Phone number:" />
+                              <TextField fx:id="addBookPages2" layoutX="480.0" layoutY="33.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Label layoutX="351.0" layoutY="83.0" text="Username:" />
+                              <TextField fx:id="addBookSection2" layoutX="480.0" layoutY="73.0" prefHeight="10.0" prefWidth="200.0" />
+                              <Button layoutX="717.0" layoutY="84.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="Add" />
+                              <Label layoutX="351.0" layoutY="123.0" text="Password:" />
+                              <Label layoutX="351.0" layoutY="164.0" text="Repeat password:" />
+                              <PasswordField layoutX="480.0" layoutY="118.0" prefHeight="26.0" prefWidth="200.0" />
+                              <PasswordField layoutX="480.0" layoutY="159.0" prefHeight="26.0" prefWidth="200.0" />
                            </children>
                         </AnchorPane>
                      </content>
@@ -63,7 +63,7 @@
                            <children>
                               <TextField layoutX="96.0" layoutY="45.0" />
                               <Label layoutX="55.0" layoutY="50.0" text="Id:" />
-                              <Button layoutX="325.0" layoutY="33.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="83.0" style="-fx-background-color: #0d2054;" text="REMOVE" textFill="#6baddf" />
+                              <Button layoutX="325.0" layoutY="33.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="83.0" text="Remove" />
                            </children>
                         </AnchorPane>
                      </content>
