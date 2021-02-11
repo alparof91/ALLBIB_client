@@ -1,12 +1,12 @@
 package sample;
 
 import com.google.gson.Gson;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import sample.SocketClientCallable;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import sample.entity.Reader;
 import sample.entity.User;
 

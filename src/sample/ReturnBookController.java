@@ -11,7 +11,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.SocketClientCallable;
 import sample.entity.Book;
 import sample.entity.BookLog;
 import sample.entity.GivenBook;
