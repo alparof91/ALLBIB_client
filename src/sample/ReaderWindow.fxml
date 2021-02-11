@@ -29,11 +29,9 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="761.0" prefWidth="807.0" style="-fx-background-color: #0d2054;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="center" prefHeight="761.0" prefWidth="807.0" style="-fx-background-color: #0d2054;" BorderPane.alignment="CENTER">
          <children>
             <fx:include fx:id="updateProfile" source="UpdateProfile.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <fx:include fx:id="book" source="Books.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-<!--            <fx:include fx:id="manageReviews" source="ManageReaders.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />-->
          </children>
       </AnchorPane>
    </center>

@@ -2,6 +2,9 @@ package sample.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -9,28 +12,33 @@ import java.io.Serializable;
  *
  */
 @Entity
-@Table(name="reviews")
+@Table(name="review")
 public class Review implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_reviews")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_review", unique = true, nullable = false)
 	private Integer idReview;
 
 	private String review;
 
 	@ManyToOne
-	@Column(name="books_id_book")
+	@JoinColumn(name="book_id_book")
 	private Book book;
+
+	private String user;
+
+	private String date;
 
 	public Review() {
 	}
 
-	public Review(Integer idReview, String review, Book book) {
-		this.idReview = idReview;
+	public Review(String review, Book book, String user, String date) {
 		this.review = review;
 		this.book = book;
+		this.user = user;
+		this.date = date;
 	}
 
 	public Integer getIdReview() {
@@ -49,17 +57,38 @@ public class Review implements Serializable {
 		this.review = review;
 	}
 
-	public Book getBooks() {
+	public Book getBook() {
 		return book;
 	}
 
-	public void setBooks(Book book) {
+	public void setBook(Book book) {
 		this.book = book;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public Date getDate() {
+		Date formattedDate = null;
+		try {
+			formattedDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return formattedDate;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	@Override
 	public String toString() {
-		return idReview + review;
-
+		return "[" + date + "] " + user;
 	}
 }

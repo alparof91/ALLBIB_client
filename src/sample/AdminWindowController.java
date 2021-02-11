@@ -28,6 +28,9 @@ public class AdminWindowController {
     private AnchorPane manageAdmins;
 
     @FXML
+    private AnchorPane manageRequests;
+
+    @FXML
     private AnchorPane manageReviews;
 
     @FXML
@@ -55,6 +58,9 @@ public class AdminWindowController {
 
     @FXML
     public void manageReviewsAction() { manageReviews.toFront(); }
+
+    @FXML
+    public void manageRequestsAction() { manageRequests.toFront(); }
 
     @FXML
     public void signOutAction() {

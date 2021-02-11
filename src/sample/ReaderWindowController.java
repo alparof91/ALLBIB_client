@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
@@ -12,14 +13,30 @@ import javafx.stage.Stage;
 import sample.entity.User;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ReaderWindowController {
+public class ReaderWindowController implements Initializable {
+
+    private User activeUser;
+
+    public void setActiveUser(User user) {
+        this.activeUser = user;
+    }
+
+    public User getActiveUser() {
+        return activeUser;
+    }
+
+//    not functional
+//    @FXML
+//    private BooksController booksController;
 
     @FXML
     private BorderPane updateProfile;
 
     @FXML
-    private AnchorPane books;
+    private AnchorPane center;
 
     @FXML
     private AnchorPane manageReaders;
@@ -45,7 +62,18 @@ public class ReaderWindowController {
     }
 
     @FXML
-    public void manageBooksAction() { books.toFront(); }
+    public void manageBooksAction() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Books.fxml"));
+            AnchorPane books = loader.load();
+            center.getChildren().add(books);
+            BooksController booksController = loader.getController();
+            booksController.setActiveUser(getActiveUser());
+            books.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void manageReadersAction() { manageReaders.toFront(); }
@@ -79,7 +107,12 @@ public class ReaderWindowController {
         System.exit(0);
     }
 
-    public void setUser(User activeUser) {
-        userLabel.setText(activeUser.getUsername());
+    public void setUser(User user) {
+        setActiveUser(user);
+        userLabel.setText(user.getUsername());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
     }
 }

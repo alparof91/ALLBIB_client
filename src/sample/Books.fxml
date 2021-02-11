@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="786.0" prefWidth="1024.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BooksController">
    <children>
@@ -36,19 +37,22 @@
                            <children>
                               <Pane layoutX="44.0" layoutY="28.0" prefHeight="161.0" prefWidth="560.0" style="-fx-border-color: #9c9c9c; -fx-border-radius: 3;">
                                  <children>
-                                    <Label layoutX="27.0" layoutY="23.0" text="Title:" />
-                                    <Label layoutX="27.0" layoutY="48.0" text="Author:" />
-                                    <Label layoutX="27.0" layoutY="73.0" text="Year:" />
-                                    <Label layoutX="27.0" layoutY="98.0" text="Publisher:" />
-                                    <Label layoutX="27.0" layoutY="123.0" text="Pages:" />
-                                    <Label fx:id="titleDetail" layoutX="107.0" layoutY="23.0" text="Detail" />
-                                    <Label fx:id="authorDetail" layoutX="107.0" layoutY="48.0" text="Detail" />
-                                    <Label fx:id="yearDetail" layoutX="107.0" layoutY="98.0" text="Detail" />
-                                    <Label fx:id="publisherDetail" layoutX="107.0" layoutY="73.0" text="Detail" />
-                                    <Label fx:id="pagesDetail" layoutX="107.0" layoutY="123.0" text="Detail" />
+                                    <Label layoutX="25.0" layoutY="5.0" text="Title:" />
+                                    <Label layoutX="25.0" layoutY="30.0" text="Author:" />
+                                    <Label layoutX="25.0" layoutY="55.0" text="Year:" />
+                                    <Label layoutX="25.0" layoutY="80.0" text="Publisher:" />
+                                    <Label layoutX="25.0" layoutY="105.0" text="Pages:" />
+                                    <Label layoutX="25.0" layoutY="130.0" text="Availability:" />
+                                    <Label fx:id="titleDetail" layoutX="108.0" layoutY="5.0" text="Detail" />
+                                    <Label fx:id="authorDetail" layoutX="108.0" layoutY="30.0" text="Detail" />
+                                    <Label fx:id="yearDetail" layoutX="108.0" layoutY="80.0" text="Detail" />
+                                    <Label fx:id="publisherDetail" layoutX="108.0" layoutY="55.0" text="Detail" />
+                                    <Label fx:id="pagesDetail" layoutX="108.0" layoutY="105.0" text="Detail" />
+                                    <Label fx:id="availabilityDetail" layoutX="108.0" layoutY="130.0" text="Detail" />
+                                    <Label fx:id="requestResponse" layoutX="294.0" layoutY="122.0" textFill="#eb0808" />
                                  </children>
                               </Pane>
-                              <Label layoutX="44.0" layoutY="6.0" text="Selected:" />
+                              <Label layoutX="45.0" layoutY="5.0" text="Selected:" />
                               <Button layoutX="626.0" layoutY="29.0" mnemonicParsing="false" onAction="#requestAction" prefHeight="161.0" prefWidth="76.0" text="Request" />
                            </children>
                         </AnchorPane>
@@ -59,15 +63,17 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ListView fx:id="reviewsListView" layoutX="6.0" layoutY="9.0" onMouseClicked="#clickOnReview" prefHeight="200.0" prefWidth="373.0" />
-                              <Label fx:id="review" layoutX="393.0" layoutY="14.0" text="Review:" />
-                           </children></AnchorPane>
+                              <Label fx:id="review" alignment="TOP_LEFT" layoutX="395.0" layoutY="47.0" maxHeight="200.0" maxWidth="400.0" prefHeight="160.0" prefWidth="400.0" wrapText="true" />
+                              <Text layoutX="395.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Review:" />
+                           </children>
+                        </AnchorPane>
                      </content>
                   </Tab>
                   <Tab text="Add a Review">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TextArea layoutX="25.0" layoutY="117.0" prefHeight="82.0" prefWidth="674.0" style="-fx-border-color: #9a9a9a; -fx-border-radius: 3;" />
+                              <TextArea fx:id="reviewField" layoutX="25.0" layoutY="117.0" prefHeight="82.0" prefWidth="674.0" style="-fx-border-color: #9a9a9a; -fx-border-radius: 3;" wrapText="true" />
                               <Pane layoutX="25.0" layoutY="30.0" prefHeight="64.0" prefWidth="759.0" style="-fx-border-color: #9c9c9c; -fx-border-radius: 3;">
                                  <children>
                                     <Label layoutX="14.0" layoutY="12.0" text="Title:" />
@@ -76,9 +82,10 @@
                                     <Label fx:id="authorDetail2" layoutX="94.0" layoutY="37.0" text="Detail" />
                                  </children>
                               </Pane>
-                              <Button layoutX="719.0" layoutY="118.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="65.0" text="Submit" />
+                              <Button layoutX="719.0" layoutY="118.0" mnemonicParsing="false" onAction="#submitReviewAction" prefHeight="81.0" prefWidth="65.0" text="Submit" />
                               <Label layoutX="25.0" layoutY="14.0" text="Selected:" />
                               <Label layoutX="25.0" layoutY="101.0" text="Review:" />
+                              <Label fx:id="submitResponse" layoutX="344.0" layoutY="151.0" />
                            </children></AnchorPane>
                      </content>
                   </Tab>

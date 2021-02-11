@@ -18,15 +18,16 @@
             </ImageView>
             <Label layoutX="20.0" layoutY="300.0" text="MENU:" textFill="#c65156" />
             <Label layoutX="20.0" layoutY="250.0" text="USER:" textFill="#c65156" />
-            <Hyperlink layoutX="35.0" layoutY="400.0" onAction="#manageBooksAction" text="Manage Books" />
-            <Hyperlink layoutX="35.0" layoutY="425.0" onAction="#manageReviewsAction" text="Reviews" />
             <Label layoutX="20.0" layoutY="275.0" text="STATUS: " textFill="#c65156" />
-            <Hyperlink layoutX="35.0" layoutY="375.0" onAction="#manageReadersAction" text="Reader Profiles" />
+            <Hyperlink layoutX="35.0" layoutY="325.0" onAction="#editYourProfileAction" text="Your Profile" />
             <Hyperlink layoutX="35.0" layoutY="350.0" onAction="#manageAdminsAction" text="Admin Profiles" />
+            <Hyperlink layoutX="35.0" layoutY="375.0" onAction="#manageReadersAction" text="Reader Profiles" />
+            <Hyperlink layoutX="35.0" layoutY="400.0" onAction="#manageBooksAction" text="Manage Books" />
+            <Hyperlink layoutX="35.0" layoutY="425.0" onAction="#manageRequestsAction" text="Manage Requests" />
+            <Hyperlink layoutX="35.0" layoutY="450.0" onAction="#manageReviewsAction" text="Manage Reviews" />
             <Hyperlink fx:id="signOutButton" onAction="#signOutAction" text="SIGN OUT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
             <Hyperlink fx:id="exitButton" layoutX="144.0" layoutY="716.0" onAction="#exitAction" text="EXIT" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
             <Label layoutX="90.0" layoutY="275.0" text="Administrator" textFill="#6baddf" />
-            <Hyperlink layoutX="35.0" layoutY="325.0" onAction="#editYourProfileAction" text="Your Profile" />
             <Label fx:id="userLabel" layoutX="88.0" layoutY="250.0" textFill="#6baddf" />
          </children>
       </AnchorPane>
@@ -36,8 +37,9 @@
          <children>
             <fx:include fx:id="manageBooks" source="ManageBooks.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <fx:include fx:id="manageReaders" source="ManageReaders.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+<!--            <fx:include fx:id="manageAdmins" source="ManageAdmins.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />-->
             <fx:include fx:id="updateProfile" source="UpdateProfile.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <fx:include fx:id="manageAdmins" source="ManageAdmins.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include fx:id="manageRequests" source="ManageRequests.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 <!--            <fx:include fx:id="manageReviews" source="ManageReaders.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />-->
          </children>
       </AnchorPane>

@@ -1,6 +1,8 @@
 package sample.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.*;
 
 
@@ -34,6 +36,11 @@ public class Book implements Serializable {
 
 	@Column(name="readers_id_reader")
 	private int idReader;
+
+	//failed to lazily initialize a collection of role: com.testcompany.entity.Book.bookLogList, could not initialize proxy - no Session
+//	@OneToMany(fetch = FetchType.EAGER)
+//	@OneToMany
+//	private Collection<BookLog> bookLogList;
 
 	public Book() {
 	}
@@ -131,6 +138,14 @@ public class Book implements Serializable {
 	public void setIdReader(int idReader) {
 		this.idReader = idReader;
 	}
+
+//	public Collection<BookLog> getBookLogList() {
+//		return bookLogList;
+//	}
+//
+//	public void setBookLogList(Collection<BookLog> bookLogList) {
+//		this.bookLogList = bookLogList;
+//	}
 
 	@Override
 	public String toString() {

@@ -56,28 +56,28 @@ public class ManageAdminsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         //based on server_client_example
-        ExecutorService es = Executors.newCachedThreadPool();
-
-        String payload = "";
-        String command = "fetchAdmins";
-
-        System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
-        SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
-
-        Future<String> response = es.submit(commandWithSocket);
-        try {
-            // Blocking this thread until the server responds
-            serverResponse = response.get();
-            System.out.println("Response from server is : " + serverResponse);
-            //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Admin[] admins = gson.fromJson(serverResponse,Admin[].class);
-            Type collectionType = new TypeToken<Collection<Admin>>(){}.getType();
-            Collection<Admin> admin = gson.fromJson(serverResponse, collectionType);
-            adminTableList.addAll(admin);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        ExecutorService es = Executors.newCachedThreadPool();
+//
+//        String payload = "";
+//        String command = "fetchAdmins";
+//
+//        System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
+//        SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
+//
+//        Future<String> response = es.submit(commandWithSocket);
+//        try {
+//            // Blocking this thread until the server responds
+//            serverResponse = response.get();
+//            System.out.println("Response from server is : " + serverResponse);
+//            //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
+//            Gson gson = new Gson();
+//            //Admin[] admins = gson.fromJson(serverResponse,Admin[].class);
+//            Type collectionType = new TypeToken<Collection<Admin>>(){}.getType();
+//            Collection<Admin> admin = gson.fromJson(serverResponse, collectionType);
+//            adminTableList.addAll(admin);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         adminID.setCellValueFactory(new PropertyValueFactory<>("idAdmin"));
         adminFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));

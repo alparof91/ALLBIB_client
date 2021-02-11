@@ -6,12 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.entity.Book;
+import sample.entity.BookLog;
+import sample.entity.Review;
 
 import java.lang.reflect.Type;
 import java.net.URL;
@@ -23,6 +22,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class ManageBooksController implements Initializable {
+
+    private Book activeBook;
 
     public static String serverResponse;
     public static final String HOSTNAME = "localhost";
@@ -51,11 +52,26 @@ public class ManageBooksController implements Initializable {
     @FXML
     private Label addMessageLabel;
 
-    // Remove Book by ID
+    // Remove Book by ID - Info Labels
     // ------------------------------------------------
 
     @FXML
-    private TextField removeBookId;
+    private Label titleDetail;
+
+    @FXML
+    private Label authorDetail;
+
+    @FXML
+    private Label yearDetail;
+
+    @FXML
+    private Label publisherDetail;
+
+    @FXML
+    private Label pagesDetail;
+
+    @FXML
+    private Label availabilityDetail;
 
     // Table
     // ------------------------------------------------
@@ -92,7 +108,30 @@ public class ManageBooksController implements Initializable {
     @FXML
     private TableColumn <Book, Date> untilColumn;
 
+    @FXML
+    private ListView<BookLog> bookLogListView;
+
     ObservableList<Book> bookTableList = FXCollections.observableArrayList();
+    ObservableList<BookLog> bookLogList = FXCollections.observableArrayList();
+
+    //for all tabs
+    @FXML
+    public void clickOnTable()
+    {
+        activeBook = booksTable.getSelectionModel().getSelectedItem();
+        setActiveBookDetails();
+        System.out.println("active book id: " + booksTable.getSelectionModel().getSelectedItem().getIdBook());
+        getBookLogsForBook(activeBook);
+//        Collection<BookLog> bookLogs = activeBook.getBookLogList();
+//        bookLogList.clear();
+//        bookLogList.addAll(bookLogs);
+    }
+
+    @FXML
+    public void clickOnBookLog()
+    {
+        System.out.println("bookLog clicked");
+    }
 
     @FXML
     private void addBookButtonAction(){
@@ -104,17 +143,15 @@ public class ManageBooksController implements Initializable {
             String payload = new Gson().toJson(book);
             System.out.println("Adding new book to database...");
             sendToServer("addBook", payload);
-            getDataFromServer();
-            booksTable.setItems(bookTableList);
+            refreshBooksTable();
         }
     }
 
     @FXML
     private void removeBookButtonAction(){
-        sendToServer("removeBook", removeBookId.getText());
-        System.out.println("Deleting book with ID:" + removeBookId.getText());
-        getDataFromServer();
-        booksTable.setItems(bookTableList);
+        String payload = new Gson().toJson(activeBook);
+        sendToServer("deleteBook", payload);
+        refreshBooksTable();
     }
 
     private void sendToServer(String command, String payload) {
@@ -137,7 +174,7 @@ public class ManageBooksController implements Initializable {
         }
     }
 
-    private void getDataFromServer(){
+    private void getBooksFromServer(){
         //based on server_client_example
         ExecutorService es = Executors.newCachedThreadPool();
 
@@ -165,6 +202,34 @@ public class ManageBooksController implements Initializable {
         }
     }
 
+    private void  getBookLogsForBook(Book activeBook){
+        //based on server_client_example
+        ExecutorService es = Executors.newCachedThreadPool();
+
+        String payload = new Gson().toJson(activeBook);
+        String command = "fetchBookLogsForBook";
+
+        System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
+        SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
+
+        Future<String> response = es.submit(commandWithSocket);
+        try {
+            // Blocking this thread until the server responds
+            serverResponse = response.get();
+            System.out.println("Response from server is : " + serverResponse);
+
+            //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
+            Gson gson = new Gson();
+            //BookLog[] bookLogs = gson.fromJson(serverResponse,BookLog[].class);
+            Type collectionType = new TypeToken<Collection<BookLog>>(){}.getType();
+            Collection<BookLog> bookLogs = gson.fromJson(serverResponse, collectionType);
+            bookLogList.clear();
+            bookLogList.addAll(bookLogs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initCols(){
         idColumn.setCellValueFactory(new PropertyValueFactory<>("idBook"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -178,10 +243,26 @@ public class ManageBooksController implements Initializable {
         untilColumn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        getDataFromServer();
+    public void setActiveBookDetails(){
+        titleDetail.setText(activeBook.getTitle());
+        authorDetail.setText(activeBook.getAuthor());
+        yearDetail.setText(activeBook.getYear());
+        publisherDetail.setText(activeBook.getPublisher());
+        pagesDetail.setText(Integer.toString(activeBook.getPages()));
+        availabilityDetail.setText(activeBook.getAvailability());
+    }
+
+    public void refreshBooksTable(){
+        getBooksFromServer();
         initCols();
         booksTable.setItems(bookTableList);
+        activeBook = bookTableList.get(0);
+        setActiveBookDetails();
+        bookLogListView.setItems(bookLogList);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        refreshBooksTable();
     }
 }
