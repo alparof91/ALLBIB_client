@@ -36,6 +36,10 @@ public class Request implements Serializable {
 		this.requestDate = requestDate;
 	}
 
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public Integer getIdRequest() {
 		return idRequest;
 	}

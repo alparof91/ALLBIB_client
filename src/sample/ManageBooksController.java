@@ -8,9 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sample.SocketClientCallable;
 import sample.entity.Book;
 import sample.entity.BookLog;
-import sample.entity.Review;
 
 import java.lang.reflect.Type;
 import java.net.URL;
@@ -103,12 +103,6 @@ public class ManageBooksController implements Initializable {
     private TableColumn <Book, String> availabilityColumn;
 
     @FXML
-    private TableColumn <Book, Integer> atReaderColumn;
-
-    @FXML
-    private TableColumn <Book, Date> untilColumn;
-
-    @FXML
     private ListView<BookLog> bookLogListView;
 
     ObservableList<Book> bookTableList = FXCollections.observableArrayList();
@@ -150,7 +144,17 @@ public class ManageBooksController implements Initializable {
     @FXML
     private void removeBookButtonAction(){
         String payload = new Gson().toJson(activeBook);
-        sendToServer("deleteBook", payload);
+        sendToServer("removeBook", payload);
+        refreshBooksTable();
+    }
+
+    @FXML
+    private void refreshAction(){
+        refreshBooksTable();
+    }
+
+    @FXML
+    private void refreshAction2(){
         refreshBooksTable();
     }
 
@@ -239,8 +243,6 @@ public class ManageBooksController implements Initializable {
         pagesColumn.setCellValueFactory(new PropertyValueFactory<>("pages"));
         sectionColumn.setCellValueFactory(new PropertyValueFactory<>("section"));
         availabilityColumn.setCellValueFactory(new PropertyValueFactory<>("availability"));
-        atReaderColumn.setCellValueFactory(new PropertyValueFactory<>("idReader"));
-        untilColumn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
     }
 
     public void setActiveBookDetails(){
@@ -256,9 +258,11 @@ public class ManageBooksController implements Initializable {
         getBooksFromServer();
         initCols();
         booksTable.setItems(bookTableList);
-        activeBook = bookTableList.get(0);
+        if (!bookTableList.isEmpty())
+            activeBook = bookTableList.get(0);
         setActiveBookDetails();
         bookLogListView.setItems(bookLogList);
+        addMessageLabel.setText("");
     }
 
     @Override

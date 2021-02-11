@@ -18,34 +18,18 @@ import java.util.ResourceBundle;
 
 public class ReaderWindowController implements Initializable {
 
-    private User activeUser;
+    private User user;
 
-    public void setActiveUser(User user) {
-        this.activeUser = user;
+    public void setUser(User user) {
+        this.user = user;
+        userLabel.setText(user.getUsername());
     }
-
-    public User getActiveUser() {
-        return activeUser;
-    }
-
-//    not functional
-//    @FXML
-//    private BooksController booksController;
 
     @FXML
     private BorderPane updateProfile;
 
     @FXML
     private AnchorPane center;
-
-    @FXML
-    private AnchorPane manageReaders;
-
-    @FXML
-    private AnchorPane manageAdmins;
-
-    @FXML
-    private AnchorPane manageReviews;
 
     @FXML
     private Label userLabel;
@@ -62,27 +46,34 @@ public class ReaderWindowController implements Initializable {
     }
 
     @FXML
-    public void manageBooksAction() {
+    public void notificationsAction() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Books.fxml"));
-            AnchorPane books = loader.load();
-            center.getChildren().add(books);
-            BooksController booksController = loader.getController();
-            booksController.setActiveUser(getActiveUser());
-            books.toFront();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MyNotifications.fxml"));
+            AnchorPane notifications = loader.load();
+            center.getChildren().add(notifications);
+            MyNotificationsController myNotificationsController = loader.getController();
+//            myNotificationsController.setActiveUser(user);
+            myNotificationsController.loadNotificationWithUser(user);
+            notifications.toFront();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    public void manageReadersAction() { manageReaders.toFront(); }
-
-    @FXML
-    public void manageAdminsAction() { manageAdmins.toFront(); }
-
-    @FXML
-    public void manageReviewsAction() { manageReviews.toFront(); }
+    public void manageBooksAction() {
+        //for passing activeUser to the BooksController
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Books.fxml"));
+            AnchorPane books = loader.load();
+            center.getChildren().add(books);
+            BooksController booksController = loader.getController();
+            booksController.setActiveUser(user);
+            books.toFront();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void signOutAction() {
@@ -107,12 +98,8 @@ public class ReaderWindowController implements Initializable {
         System.exit(0);
     }
 
-    public void setUser(User user) {
-        setActiveUser(user);
-        userLabel.setText(user.getUsername());
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        editYourProfileAction();
     }
 }

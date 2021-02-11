@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sample.SocketClientCallable;
 import sample.entity.Book;
 import sample.entity.BookLog;
 import sample.entity.GivenBook;
@@ -34,7 +35,7 @@ public class ManageRequestsController implements Initializable {
     public static final String HOSTNAME = "localhost";
     public static final int PORT = 9001;
 
-    // Table
+    // Request Table
     // ------------------------------------------------
     @FXML
     private TableView<Request> requestsTable;
@@ -81,26 +82,45 @@ public class ManageRequestsController implements Initializable {
     // ------------------------------------------------
     @FXML
     private void acceptAction(){
+        //getting allocated days
         int days;
         if (isParsable(allocatedDays.getText()))
             days = Integer.parseInt(allocatedDays.getText());
-        else days = 10;
+        else {
+            days = 10;
+            dateFormatRespond.setText("Date format not accepted");
+        }
 
-        if (modifyBookOnServer(activeBook))
-            removeRequestFromServer(activeRequest);
-        else System.out.println("Updating book failed. Operation aborted.");
+        //modify books availability an update on server
+        activeBook.setAvailability("no");
+        updateBookOnServer(activeBook);
+        removeRequestFromServer(activeRequest);
 
         LocalDate acceptDate = LocalDate.now();
         System.out.println("From:" + acceptDate + " - Until:" + acceptDate.plusDays(days));
-        BookLog bookLog = new BookLog (activeBook, activeRequest.getUsername() + "\'s request for book: \'" + activeBook.getTitle() + "\' has been approved.", acceptDate);
+        BookLog bookLog = new BookLog (activeBook, "Request accepted for: " + activeRequest.getUsername() , acceptDate);
         addBookLogToServer(bookLog);
         GivenBook givenBook = new GivenBook (activeBook, activeRequest.getUsername(), acceptDate, acceptDate.plusDays(10));
         addGivenBookToServer(givenBook);
         refreshRequestsList();
     }
 
+    //from https://stackoverflow.com/questions/6456219/java-checking-if-parseint-throws-exception
+    //to check if a field is parsable to Int
+    public static boolean isParsable(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (final NumberFormatException e) {
+            return false;
+        }
+    }
+
     @FXML
     private void declineAction(){
+        LocalDate declineDate = LocalDate.now();
+        BookLog bookLog = new BookLog (activeBook, "Request declined for: " + activeRequest.getUsername() , declineDate);
+        addBookLogToServer(bookLog);
         removeRequestFromServer(activeRequest);
         refreshRequestsList();
     }
@@ -162,30 +182,25 @@ public class ManageRequestsController implements Initializable {
         requestDateColumn.setCellValueFactory(new PropertyValueFactory<>("requestDate"));
     }
 
-    private boolean modifyBookOnServer(Book modifiedBook){
+    private void updateBookOnServer(Book book){
         //based on server_client_example
         ExecutorService es = Executors.newCachedThreadPool();
 
-        String command = "modifyBook";
-        String payload = new Gson().toJson(modifiedBook);
+        String command = "updateBook";
+        String payload = new Gson().toJson(book);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
 
         Future<String> response = es.submit(commandWithSocket);
         try {
-//                Blocking this thread until the server responds
             serverResponse = response.get();
             System.out.println("Response from server is : " + serverResponse);
             if (serverResponse.equals("Valid")) {
                 System.out.println("Book successfully modified!");
-                return true;
             }
-            else
-                return false;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
     }
 
@@ -275,16 +290,7 @@ public class ManageRequestsController implements Initializable {
         }
     }
 
-    //from https://stackoverflow.com/questions/6456219/java-checking-if-parseint-throws-exception
-    //to check if a field is parsable to Int
-    public static boolean isParsable(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (final NumberFormatException e) {
-            return false;
-        }
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

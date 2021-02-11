@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="786.0" prefWidth="1024.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyNotificationsController">
+   <children>
+       <SplitPane dividerPositions="0.75" layoutX="20.0" layoutY="20.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <TableView fx:id="notificationsTable" onMouseClicked="#clickOnTable">
+              <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID" />
+                  <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date" />
+                  <TableColumn fx:id="bookColumn" prefWidth="250.0" text="Book" />
+                  <TableColumn fx:id="messageColumn" prefWidth="300.0" text="Message" />
+              </columns>
+            </TableView>
+            <TabPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="My Notifications">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <Pane layoutX="44.0" layoutY="28.0" prefHeight="161.0" prefWidth="560.0" style="-fx-border-color: #9c9c9c; -fx-border-radius: 3;">
+                                 <children>
+                                    <Label layoutX="25.0" layoutY="5.0" text="Date:" />
+                                    <Label layoutX="25.0" layoutY="30.0" text="Book:" />
+                                    <Label layoutX="23.0" layoutY="81.0" text="Message:" />
+                                    <Label fx:id="dateDetail" layoutX="110.0" layoutY="5.0" text="Detail" />
+                                    <Label fx:id="bookDetail" alignment="TOP_LEFT" layoutX="110.0" layoutY="30.0" prefHeight="49.0" prefWidth="442.0" text="Detail" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                                    <Label fx:id="messageDetail" alignment="TOP_LEFT" layoutX="110.0" layoutY="81.0" prefHeight="64.0" prefWidth="442.0" text="Detail" wrapText="true" />
+                                 </children>
+                              </Pane>
+                              <Label layoutX="45.0" layoutY="5.0" text="Selected:" />
+                              <Button layoutX="626.0" layoutY="29.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="161.0" prefWidth="76.0" text="Delete" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

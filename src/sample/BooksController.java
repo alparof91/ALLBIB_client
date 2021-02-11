@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sample.SocketClientCallable;
 import sample.entity.*;
 
 import java.lang.reflect.Type;
@@ -167,6 +168,11 @@ public class BooksController implements Initializable {
         requestResponse.setText("");
     }
 
+    @FXML
+    private void refreshAction(){
+        refreshBooksTable();
+    }
+
     //for all tabs
     //couldn't manage with template function :(
     private void getBooksFromServer(){
@@ -215,16 +221,16 @@ public class BooksController implements Initializable {
     {
         if (activeBook.getAvailability().equals("yes")) {
             LocalDate requestDate = LocalDate.now();
-            //creating new request object
+            //creating new request and push to the server
             Request newRequest = new Request (booksTable.getSelectionModel().getSelectedItem(), getActiveUser().getUsername(), requestDate);
             addRequestToServer(newRequest);
 
             //log request
-            BookLog bookLog = new BookLog (activeBook, getActiveUser().getUsername() + "\'s request for book: \'" + activeBook.getTitle() + "\' has been approved.", requestDate);
+            BookLog bookLog = new BookLog (activeBook, "Requested by: " + activeUser.getUsername(), requestDate);
             addBookLogToServer(bookLog);
         }
         else {
-        System.out.println("selected book not available");
+        requestResponse.setText("Not available right now");
         }
     }
 
@@ -337,13 +343,18 @@ public class BooksController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void refreshBooksTable(){
         getBooksFromServer();
         initCols();
         booksTable.setItems(bookTableList);
-        activeBook = bookTableList.get(0);
+        if (!bookTableList.isEmpty())
+            activeBook = bookTableList.get(0);
         setActiveBookDetails();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        refreshBooksTable();
 
         getReviewsFromServer();
         System.out.println(reviewList);

@@ -31,7 +31,7 @@ public class AdminWindowController {
     private AnchorPane manageRequests;
 
     @FXML
-    private AnchorPane manageReviews;
+    private AnchorPane returnBook;
 
     @FXML
     private Label userLabel;
@@ -57,10 +57,10 @@ public class AdminWindowController {
     public void manageAdminsAction() { manageAdmins.toFront(); }
 
     @FXML
-    public void manageReviewsAction() { manageReviews.toFront(); }
+    public void manageRequestsAction() { manageRequests.toFront(); }
 
     @FXML
-    public void manageRequestsAction() { manageRequests.toFront(); }
+    public void ReturnBookAction() { returnBook.toFront(); }
 
     @FXML
     public void signOutAction() {

@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="786.0" prefWidth="1024.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManageRequestsController">
+<AnchorPane prefHeight="786.0" prefWidth="1024.0" style="-fx-background-color: yellow;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManageRequestsController">
    <children>
-       <SplitPane fx:id="addBookSplitPane" dividerPositions="0.75" layoutX="20.0" layoutY="20.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <SplitPane dividerPositions="0.75" layoutX="20.0" layoutY="20.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="852.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
             <TableView fx:id="requestsTable" onMouseClicked="#clickOnRequests">
               <columns>
                   <TableColumn fx:id="idColumn" prefWidth="30.0" text="ID" />
-                  <TableColumn fx:id="bookColumn" prefWidth="550.0" text="Book" />
-                  <TableColumn fx:id="usernameColumn" prefWidth="120.0" text="Username" />
-                  <TableColumn fx:id="requestDateColumn" prefWidth="120.0" text="Request Date" />
+                  <TableColumn fx:id="bookColumn" prefWidth="450.0" text="Book" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="150.0" text="Username" />
+                  <TableColumn fx:id="requestDateColumn" prefWidth="150.0" text="Request Date" />
               </columns>
             </TableView>
             <TabPane maxHeight="250.0" minHeight="250.0" prefHeight="250.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
-                   <Tab text="Approve Requests">
+                   <Tab text="Manage Requests">
                        <content>
                            <AnchorPane>
                                <children>
@@ -42,64 +50,6 @@
                                    <Button layoutX="625.0" layoutY="84.0" mnemonicParsing="false" onAction="#acceptAction" prefHeight="50.0" prefWidth="125.0" text="Accept" />
                                    <Button layoutX="625.0" layoutY="139.0" mnemonicParsing="false" onAction="#declineAction" prefHeight="50.0" prefWidth="125.0" text="Decline" />
                               <Button layoutX="625.0" layoutY="28.0" mnemonicParsing="false" onAction="#refreshAction" prefHeight="50.0" prefWidth="125.0" text="Refresh" />
-                               </children>
-                           </AnchorPane>
-                       </content>
-                   </Tab>
-                   <Tab text="Return Book">
-                       <content>
-                           <AnchorPane>
-                               <children>
-                                   <Pane layoutX="44.0" layoutY="28.0" prefHeight="161.0" prefWidth="560.0" style="-fx-border-color: #9c9c9c; -fx-border-radius: 3;">
-                                       <children>
-                                           <Label layoutX="25.0" layoutY="5.0" text="Title:" />
-                                           <Label layoutX="25.0" layoutY="30.0" text="Author:" />
-                                           <Label layoutX="25.0" layoutY="55.0" text="Year:" />
-                                           <Label layoutX="25.0" layoutY="80.0" text="User:" />
-                                           <Label layoutX="25.0" layoutY="105.0" text="Request Date:" />
-                                           <Label fx:id="titleDetail2" layoutX="145.0" layoutY="5.0" />
-                                           <Label fx:id="authorDetail2" layoutX="145.0" layoutY="30.0" />
-                                           <Label fx:id="userDetail2" layoutX="145.0" layoutY="80.0" />
-                                           <Label fx:id="yearDetail2" layoutX="145.0" layoutY="55.0" />
-                                           <Label fx:id="requestDateDetail2" layoutX="145.0" layoutY="105.0" />
-                                           <Label layoutX="25.0" layoutY="131.0" text="Allocated days:" />
-                                           <TextField fx:id="allocatedDays2" layoutX="145.0" layoutY="126.0" prefHeight="26.0" prefWidth="115.0" />
-                                           <Label fx:id="dateFormatRespond2" layoutX="280.0" layoutY="131.0" />
-                                       </children>
-                                   </Pane>
-                                   <Label layoutX="45.0" layoutY="5.0" text="Request details:" />
-                                   <Button layoutX="625.0" layoutY="84.0" mnemonicParsing="false" onAction="#acceptAction" prefHeight="50.0" prefWidth="125.0" text="Accept" />
-                                   <Button layoutX="625.0" layoutY="139.0" mnemonicParsing="false" onAction="#declineAction" prefHeight="50.0" prefWidth="125.0" text="Decline" />
-                                   <Button layoutX="625.0" layoutY="28.0" mnemonicParsing="false" onAction="#refreshAction" prefHeight="50.0" prefWidth="125.0" text="Refresh" />
-                               </children>
-                           </AnchorPane>
-                       </content>
-                   </Tab>
-                   <Tab text="Send Notification">
-                       <content>
-                           <AnchorPane>
-                               <children>
-                                   <Pane layoutX="44.0" layoutY="28.0" prefHeight="161.0" prefWidth="560.0" style="-fx-border-color: #9c9c9c; -fx-border-radius: 3;">
-                                       <children>
-                                           <Label layoutX="25.0" layoutY="5.0" text="Title:" />
-                                           <Label layoutX="25.0" layoutY="30.0" text="Author:" />
-                                           <Label layoutX="25.0" layoutY="55.0" text="Year:" />
-                                           <Label layoutX="25.0" layoutY="80.0" text="User:" />
-                                           <Label layoutX="25.0" layoutY="105.0" text="Request Date:" />
-                                           <Label fx:id="titleDetail3" layoutX="145.0" layoutY="5.0" />
-                                           <Label fx:id="authorDetail3" layoutX="145.0" layoutY="30.0" />
-                                           <Label fx:id="userDetail3" layoutX="145.0" layoutY="80.0" />
-                                           <Label fx:id="yearDetail3" layoutX="145.0" layoutY="55.0" />
-                                           <Label fx:id="requestDateDetail3" layoutX="145.0" layoutY="105.0" />
-                                           <Label layoutX="25.0" layoutY="131.0" text="Allocated days:" />
-                                           <TextField fx:id="allocatedDays3" layoutX="145.0" layoutY="126.0" prefHeight="26.0" prefWidth="115.0" />
-                                           <Label fx:id="dateFormatRespond3" layoutX="280.0" layoutY="131.0" />
-                                       </children>
-                                   </Pane>
-                                   <Label layoutX="45.0" layoutY="5.0" text="Request details:" />
-                                   <Button layoutX="625.0" layoutY="84.0" mnemonicParsing="false" onAction="#acceptAction" prefHeight="50.0" prefWidth="125.0" text="Accept" />
-                                   <Button layoutX="625.0" layoutY="139.0" mnemonicParsing="false" onAction="#declineAction" prefHeight="50.0" prefWidth="125.0" text="Decline" />
-                                   <Button layoutX="625.0" layoutY="28.0" mnemonicParsing="false" onAction="#refreshAction" prefHeight="50.0" prefWidth="125.0" text="Refresh" />
                                </children>
                            </AnchorPane>
                        </content>

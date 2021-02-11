@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sample.SocketClientCallable;
 import sample.entity.Reader;
 import sample.entity.User;
 

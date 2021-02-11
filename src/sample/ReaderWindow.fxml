@@ -18,12 +18,13 @@
             </ImageView>
             <Label layoutX="20.0" layoutY="300.0" text="MENU:" textFill="#c65156" />
             <Label layoutX="20.0" layoutY="250.0" text="USER:" textFill="#c65156" />
+            <Hyperlink layoutX="35.0" layoutY="325.0" onAction="#editYourProfileAction" text="Your Profile" />
             <Hyperlink layoutX="35.0" layoutY="350.0" onAction="#manageBooksAction" text="Books" />
+            <Hyperlink layoutX="35.0" layoutY="375.0" onAction="#notificationsAction" text="Notifications" />
             <Label layoutX="20.0" layoutY="275.0" text="STATUS: " textFill="#c65156" />
             <Hyperlink fx:id="signOutButton" onAction="#signOutAction" text="SIGN OUT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
             <Hyperlink fx:id="exitButton" layoutX="144.0" layoutY="716.0" onAction="#exitAction" text="EXIT" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
             <Label layoutX="90.0" layoutY="275.0" text="Reader" textFill="#6baddf" />
-            <Hyperlink layoutX="35.0" layoutY="325.0" onAction="#editYourProfileAction" text="Your Profile" />
             <Label fx:id="userLabel" layoutX="88.0" layoutY="250.0" textFill="#6baddf" />
          </children>
       </AnchorPane>

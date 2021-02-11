@@ -16,8 +16,8 @@ public class GivenBook implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_book_log", unique = true, nullable = false)
-    private Integer idBookLog;
+    @Column(name="id_given_book", unique = true, nullable = false)
+    private Integer idGivenBook;
 
     @ManyToOne
     @JoinColumn(name="book_id_book")
@@ -41,12 +41,12 @@ public class GivenBook implements Serializable {
         this.returnDate = returnDate;
     }
 
-    public Integer getIdBookLog() {
-        return idBookLog;
+    public Integer getIdGivenBook() {
+        return idGivenBook;
     }
 
-    public void setIdBookLog(Integer idBookLog) {
-        this.idBookLog = idBookLog;
+    public void setIdGivenBook(Integer idGivenBook) {
+        this.idGivenBook = idGivenBook;
     }
 
     public Book getBook() {
