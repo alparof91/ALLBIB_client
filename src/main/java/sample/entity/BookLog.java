@@ -1,6 +1,6 @@
 package sample.entity;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -9,23 +9,23 @@ import java.time.LocalDate;
  * The persistent class for the book_log database table.
  *
  */
-@Entity
-@Table(name="book_log")
+//@Entity
+//@Table(name="book_log")
 public class BookLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_book_log", unique = true, nullable = false)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name="id_book_log", unique = true, nullable = false)
     private Integer idBookLog;
 
-    @ManyToOne
-    @JoinColumn(name="book_id_book")
+//    @ManyToOne
+//    @JoinColumn(name="book_id_book")
     private Book book;
 
     private String message;
 
-    @Column(name="log_date")
+//    @Column(name="log_date")
     private LocalDate logDate;
 
     public BookLog() {

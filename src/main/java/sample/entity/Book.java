@@ -3,21 +3,21 @@ package sample.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import javax.persistence.*;
+//import javax.persistence.*;
 
 
 /**
  * The persistent class for the books database table.
  * 
  */
-@Entity
-@Table(name="books")
+//@Entity
+//@Table(name="books")
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_book")
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Column(name="id_book")
 	private int idBook;
 
 	private String title;

@@ -1,21 +1,21 @@
 package sample.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+//import javax.persistence.*;
 
 
 /**
  * The persistent class for the user database table.
  * 
  */
-@Entity
-@Table(name="user")
+//@Entity
+//@Table(name="user")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_user") //annotation for map
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name="id_user") //annotation for map
 	private int idUser;
 
 	private String username;

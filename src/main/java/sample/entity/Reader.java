@@ -1,27 +1,27 @@
 package sample.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+//import javax.persistence.*;
 
 
 /**
  * The persistent class for the readers database table.
  *
  */
-@Entity
-@Table(name="readers")
+//@Entity
+//@Table(name="readers")
 public class Reader implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_reader")
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Column(name="id_reader")
 	private int idReader;
 
-	@Column(name="first_name")
+//	@Column(name="first_name")
 	private String firstName;
 
-	@Column(name="second_name")
+//	@Column(name="second_name")
 	private String secondName;
 
 	private String address;
@@ -30,7 +30,7 @@ public class Reader implements Serializable {
 
 	private String phone;
 
-	@OneToOne
+//	@OneToOne
 	private User user;
 
 	public Reader() {
