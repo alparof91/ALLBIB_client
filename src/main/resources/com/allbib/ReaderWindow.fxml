@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.allbib.ReaderWindowController">
+   <left>
+      <AnchorPane style="-fx-background-color: #0d2054;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="174.0" fitWidth="200.0" layoutX="10.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/ALLBIB.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="20.0" layoutY="300.0" text="MENU:" textFill="#c65156" />
+            <Label layoutX="20.0" layoutY="250.0" text="USER:" textFill="#c65156" />
+            <Hyperlink layoutX="35.0" layoutY="325.0" onAction="#editYourProfileAction" text="Your Profile" />
+            <Hyperlink layoutX="35.0" layoutY="350.0" onAction="#manageBooksAction" text="Books" />
+            <Hyperlink layoutX="35.0" layoutY="375.0" onAction="#notificationsAction" text="Notifications" />
+            <Label layoutX="20.0" layoutY="275.0" text="STATUS: " textFill="#c65156" />
+            <Hyperlink fx:id="signOutButton" onAction="#signOutAction" text="SIGN OUT" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
+            <Hyperlink fx:id="exitButton" layoutX="144.0" layoutY="716.0" onAction="#exitAction" text="EXIT" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Label layoutX="90.0" layoutY="275.0" text="Reader" textFill="#6baddf" />
+            <Label fx:id="userLabel" layoutX="88.0" layoutY="250.0" textFill="#6baddf" />
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane fx:id="center" prefHeight="761.0" prefWidth="807.0" style="-fx-background-color: #0d2054;" BorderPane.alignment="CENTER">
+         <children>
+            <fx:include fx:id="updateProfile" source="UpdateProfile.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

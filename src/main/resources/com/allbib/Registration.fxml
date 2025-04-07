@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #0d2054;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.allbib.RegistrationController">
+   <children>
+      <AnchorPane layoutY="82.0" prefHeight="420.0" prefWidth="700.0" style="-fx-background-color: #6baddf;">
+         <children>
+            <Text fill="#0d2054" layoutX="20.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Information" wrappingWidth="142.0" />
+            <Line endX="530.0" layoutX="130.0" layoutY="30.0" startX="-110.0" />
+            <!--personal info-->
+            <Text fill="#0d2054" layoutX="30.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First name:" wrappingWidth="80.0" />
+            <TextField fx:id="firstNameField" layoutX="130.0" layoutY="45.0" prefHeight="25.0" prefWidth="200.0" />
+            <Text fill="#0d2054" layoutX="350.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second name:" wrappingWidth="96.64307683706284" />
+            <TextField fx:id="secondNameField" layoutX="455.0" layoutY="45.0" prefHeight="25.0" prefWidth="200.0" />
+            <Text fill="#0d2054" layoutX="30.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="61.000001043081284" />
+            <TextField fx:id="addressField" layoutX="130.0" layoutY="85.0" prefHeight="25.0" prefWidth="525.0" promptText="Country, City, Street, Nr" />
+            <Text fill="#0d2054" layoutX="30.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="e-mail:" wrappingWidth="80.0" />
+            <TextField fx:id="emailField" layoutX="130.0" layoutY="125.0" prefHeight="25.0" prefWidth="200.0" />
+            <Text fill="#0d2054" layoutX="350.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:" wrappingWidth="113.33332657814026" />
+            <TextField fx:id="phoneField" layoutX="455.0" layoutY="125.0" prefHeight="25.0" prefWidth="200.0" />
+            <Text fill="#0d2054" layoutX="30.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" wrappingWidth="96.64306640625" />
+            <TextField fx:id="birthdayField" layoutX="130.0" layoutY="165.0" prefHeight="25.0" prefWidth="200.0" promptText="DD/MM/YYYY" />
+            <!--user info-->
+            <Text fill="#0d2054" layoutX="20.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Information" wrappingWidth="142.0" />
+            <Line endX="530.0" layoutX="130.0" layoutY="230.0" startX="-110.0" />
+            <Text fill="#0d2054" layoutX="30.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="80.0" />
+            <TextField fx:id="userField" layoutX="130.0" layoutY="250.0" prefHeight="25.0" prefWidth="200.0" />
+            <Text fill="#0d2054" layoutX="30.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="80.0" />
+            <PasswordField fx:id="passwordField" layoutX="130.0" layoutY="290.0" prefHeight="25.0" prefWidth="200.0" />
+            <Text fill="#0d2054" layoutX="360.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter password:" wrappingWidth="80.0" />
+            <PasswordField fx:id="passwordField2" layoutX="455.0" layoutY="290.0" prefHeight="25.0" prefWidth="200.0" />
+            <!--buttons-->
+            <Label fx:id="signUpMessageLabel" alignment="CENTER" layoutX="54.0" layoutY="333.0" prefHeight="16.0" prefWidth="593.0" textAlignment="CENTER" textFill="#a8151f" textOverrun="CENTER_ELLIPSIS" />
+            <Button fx:id="signUpButton" layoutX="223.0" layoutY="358.0" mnemonicParsing="false" onAction="#validateSignUp" prefHeight="39.0" prefWidth="254.0" style="-fx-background-color: #c65156;" text="Sign Up" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Hyperlink fx:id="backLink" layoutX="30.0" layoutY="366.0" onAction="#backToLogin" text="&lt; BACK" textFill="#0d2054" underline="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="80.0" prefWidth="700.0">
+         <children>
+            <ImageView fitHeight="85.0" fitWidth="156.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../out/production/ALLBIB/sample/images/ALLBIB.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="190.0" layoutY="20.0" text="Welcome to the ALLBIB application" textFill="#6baddf">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="260.0" layoutY="50.0" text="Easy to use library solutions" textFill="#6baddf" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
