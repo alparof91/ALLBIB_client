@@ -84,7 +84,8 @@ public class LoginController{
                 System.out.println("Login response: " + serverResponse);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Could not connect to server");
+//            e.printStackTrace();
         }
     }
 

@@ -1,4 +1,4 @@
-module com.example.allbib_client {
+module com.allbib {
     requires com.google.gson;
     requires javafx.controls;
     requires javafx.fxml;
@@ -9,5 +9,6 @@ module com.example.allbib_client {
     requires org.kordamp.bootstrapfx.core;
 
     opens com.allbib to javafx.fxml;
+    opens com.allbib.entity to com.google.gson;
     exports com.allbib;
 }

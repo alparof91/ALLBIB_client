@@ -39,7 +39,8 @@ public class SocketClientCallable implements Callable<String> {
 			return bufferedInputReader.readLine();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Could not open socket: " + this.host + ":" + this.port);
+//			e.printStackTrace();
 		}
 		return null;
 	}

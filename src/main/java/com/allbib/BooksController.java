@@ -359,7 +359,7 @@ public class BooksController implements Initializable {
         System.out.println(reviewList);
 
         reviewsListView.setItems(reviewList);
-        activeReview = reviewList.get(0);
-        setActiveReviewDetails();
+//        activeReview = reviewList.get(0);
+//        setActiveReviewDetails();
     }
 }
