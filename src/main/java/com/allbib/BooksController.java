@@ -1,6 +1,7 @@
 package com.allbib;
 
 import com.allbib.entity.*;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -130,8 +131,7 @@ public class BooksController implements Initializable {
             //creating new review object
             Review newReview = new Review(reviewField.getText(), activeBook, activeUser.getUsername(), sDate);
             String command = "addReview";
-            Gson gson=  new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-            String payload = gson.toJson(newReview);
+            String payload = GsonUtil.getGson().toJson(newReview);
 
             System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
             SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -191,10 +191,9 @@ public class BooksController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Book[] books = gson.fromJson(serverResponse,Book[].class);
+            //Book[] books = GsonUtil.getGson().fromJson(serverResponse,Book[].class);
             Type collectionType = new TypeToken<Collection<Book>>(){}.getType();
-            Collection<Book> collection = gson.fromJson(serverResponse, collectionType);
+            Collection<Book> collection = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             bookTableList.clear();
             bookTableList.addAll(collection);
         } catch (Exception e) {
@@ -268,7 +267,7 @@ public class BooksController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "fetchReviewsForBook";
-        String payload = new Gson().toJson(activeBook);
+        String payload = GsonUtil.getGson().toJson(activeBook);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -280,10 +279,9 @@ public class BooksController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Review[] reviews = gson.fromJson(serverResponse,Review[].class);
+            //Review[] reviews = GsonUtil.getGson().fromJson(serverResponse,Review[].class);
             Type collectionType = new TypeToken<Collection<Review>>(){}.getType();
-            Collection<Review> collection = gson.fromJson(serverResponse, collectionType);
+            Collection<Review> collection = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             reviewList.clear();
             reviewList.addAll(collection);
         } catch (Exception e) {
@@ -296,7 +294,7 @@ public class BooksController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "addRequest";
-        String payload = new Gson().toJson(newRequest);
+        String payload = GsonUtil.getGson().toJson(newRequest);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -322,7 +320,7 @@ public class BooksController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "addBookLog";
-        String payload = new Gson().toJson(bookLog);
+        String payload = GsonUtil.getGson().toJson(bookLog);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -346,8 +344,9 @@ public class BooksController implements Initializable {
         getBooksFromServer();
         initCols();
         booksTable.setItems(bookTableList);
-        if (!bookTableList.isEmpty())
+        if (!bookTableList.isEmpty()) {
             activeBook = bookTableList.get(0);
+        }
         setActiveBookDetails();
     }
 
@@ -359,7 +358,9 @@ public class BooksController implements Initializable {
         System.out.println(reviewList);
 
         reviewsListView.setItems(reviewList);
-//        activeReview = reviewList.get(0);
-//        setActiveReviewDetails();
+        if (!reviewList.isEmpty()) {
+            activeReview = reviewList.get(0);
+        }
+        setActiveReviewDetails();
     }
 }

@@ -5,18 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97cc4379-a377-4947-bc28-1996227e6bb0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/allbib/utils/gson/GsonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/allbib/utils/gson/LocalDateAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/BooksController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/SocketClientCallable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/SocketClientCallable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/ManageAdminsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/ManageAdminsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/ManageBooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/ManageBooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/ManageReadersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/ManageReadersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/ManageRequestsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/ManageRequestsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/MyNotificationsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/MyNotificationsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/ReturnBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/ReturnBookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/Styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/allbib/Styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/UpdateProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/UpdateProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/BookLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/BookLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/GivenBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/GivenBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/allbib/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/allbib/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/allbib/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,18 +57,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ubi/IdeaProjects/ALLBIB_server&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/ubi/IdeaProjects/ALLBIB_client",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\ubi\IdeaProjects\ALLBIB_client\src\main\resources\com\allbib" />
+      <recent name="\\wsl.localhost\Ubuntu\home\ubi\IdeaProjects\ALLBIB_client\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">

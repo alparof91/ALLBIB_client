@@ -2,6 +2,7 @@ package com.allbib;
 
 import com.allbib.entity.Reader;
 import com.allbib.entity.User;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
@@ -70,10 +71,9 @@ public class ManageReadersController implements Initializable {
             serverResponse = response.get();
             System.out.println("Response from server is : " + serverResponse);
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Reader[] readers = gson.fromJson(serverResponse,Reader[].class);
+            //Reader[] readers = GsonUtil.getGson().fromJson(serverResponse,Reader[].class);
             Type collectionType = new TypeToken<Collection<Reader>>(){}.getType();
-            Collection<Reader> readers = gson.fromJson(serverResponse, collectionType);
+            Collection<Reader> readers = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             readerTableList.addAll(readers);
         } catch (Exception e) {
             e.printStackTrace();

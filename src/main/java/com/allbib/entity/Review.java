@@ -1,34 +1,17 @@
 package com.allbib.entity;
 
-//import javax.persistence.*;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-/**
- * The persistent class for the review database table.
- *
- */
-//@Entity
-//@Table(name="review")
 public class Review implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name="id_review", unique = true, nullable = false)
 	private Integer idReview;
-
 	private String review;
-
-//	@ManyToOne
-//	@JoinColumn(name="book_id_book")
 	private Book book;
-
 	private String user;
-
 	private String date;
 
 	public Review() {

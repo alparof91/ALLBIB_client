@@ -9,6 +9,7 @@ module com.allbib {
     requires org.kordamp.bootstrapfx.core;
 
     opens com.allbib to javafx.fxml;
-    opens com.allbib.entity to com.google.gson;
+    opens com.allbib.entity to com.google.gson, javafx.base;
+//    opens java.base to com.google.gson;
     exports com.allbib;
 }

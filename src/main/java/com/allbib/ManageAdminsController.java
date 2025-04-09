@@ -2,6 +2,7 @@ package com.allbib;
 
 import com.allbib.entity.Admin;
 import com.allbib.entity.User;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
@@ -70,10 +71,9 @@ public class ManageAdminsController implements Initializable {
             serverResponse = response.get();
             System.out.println("Response from server is : " + serverResponse);
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Admin[] admins = gson.fromJson(serverResponse,Admin[].class);
+            //Admin[] admins = GsonUtil.getGson().fromJson(serverResponse,Admin[].class);
             Type collectionType = new TypeToken<Collection<Admin>>(){}.getType();
-            Collection<Admin> admin = gson.fromJson(serverResponse, collectionType);
+            Collection<Admin> admin = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             adminTableList.addAll(admin);
         } catch (Exception e) {
             e.printStackTrace();

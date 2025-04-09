@@ -1,6 +1,7 @@
 package com.allbib;
 
 import com.allbib.entity.User;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,7 +53,7 @@ public class LoginController{
         ExecutorService es = Executors.newCachedThreadPool();
 
         User user = new User(userField.getText(), passwordField.getText(), "reader");
-        String payload = new Gson().toJson(user);
+        String payload = GsonUtil.getGson().toJson(user);
         String command = "login";
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);

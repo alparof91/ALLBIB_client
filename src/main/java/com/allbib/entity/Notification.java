@@ -1,33 +1,15 @@
 package com.allbib.entity;
 
-//import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 
-/**
- * The persistent class for the notification database table.
- *
- */
-//@Entity
-//@Table(name="notification")
 public class Notification implements Serializable {
     private static final long serialVersionUID = 1L;
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name="id_notification", unique = true, nullable = false)
     private Integer idNotification;
-
-//    @ManyToOne
-//    @JoinColumn(name="book_id_book")
     private Book book;
-
     private String message;
-
     private String username;
-
-//    @Column(name="date")
     private LocalDate date;
 
     public Notification() {

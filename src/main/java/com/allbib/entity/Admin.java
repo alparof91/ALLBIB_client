@@ -1,38 +1,17 @@
 package com.allbib.entity;
 
-//import javax.persistence.*;
 import java.io.Serializable;
 
 
-/**
- * The persistent class for the admins database table.
- *
- */
-//@Entity
-//@Table(name="admins")
 public class Admin implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name="id_admin")
 	private Integer idAdmin;
-
-//	@Column(name="first_name")
 	private String firstName;
-
-//	@Column(name="second_name")
 	private String secondName;
-
 	private String address;
-
 	private String email;
-
 	private String phone;
-
-//	@OneToOne
 	private User user;
-
 	public Admin() {
 	}
 

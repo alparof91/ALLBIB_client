@@ -2,6 +2,7 @@ package com.allbib;
 
 import com.allbib.entity.Reader;
 import com.allbib.entity.User;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,12 +68,12 @@ public class UpdateProfileController implements Initializable {
             System.out.println("Password repeat error");
         } else {
             User user = new User(userField.getText(), passwordField.getText(),"reader");
-            String payload = new Gson().toJson(user);
+            String payload = GsonUtil.getGson().toJson(user);
             System.out.println("Sending to server:\ncommand: updateUser,\ndata: " + payload);
             sendToServer("updateUser", payload);
 
             Reader reader = new Reader(firstNameField.getText(), secondNameField.getText(), addressField.getText(), emailField.getText(), phoneField.getText(), user);
-            payload = new Gson().toJson(reader);
+            payload = GsonUtil.getGson().toJson(reader);
             System.out.println("Sending to server:\ncommand: addReader,\ndata: " + payload);
             sendToServer("updateReader", payload);
 

@@ -1,6 +1,5 @@
 package com.allbib.entity;
 
-//import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -9,26 +8,12 @@ import java.time.LocalDate;
  * The persistent class for the given_book database table.
  *
  */
-//@Entity
-//@Table(name="given_book")
 public class GivenBook implements Serializable {
     private static final long serialVersionUID = 1L;
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name="id_given_book", unique = true, nullable = false)
     private Integer idGivenBook;
-
-//    @ManyToOne
-//    @JoinColumn(name="book_id_book")
     private Book book;
-
     private String username;
-
-//    @Column(name="approval_date")
     private LocalDate approvalDate;
-
-//    @Column(name="return_date")
     private LocalDate returnDate;
 
     public GivenBook() {

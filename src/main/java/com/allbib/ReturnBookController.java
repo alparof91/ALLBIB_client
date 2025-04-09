@@ -4,6 +4,7 @@ import com.allbib.entity.Book;
 import com.allbib.entity.BookLog;
 import com.allbib.entity.GivenBook;
 import com.allbib.entity.Notification;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
@@ -149,10 +150,9 @@ public class ReturnBookController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-//            GivenBook[] givenBooks = gson.fromJson(serverResponse,GivenBook[].class);
+//            GivenBook[] givenBooks = GsonUtil.getGson().fromJson(serverResponse,GivenBook[].class);
             Type collectionType = new TypeToken<Collection<GivenBook>>(){}.getType();
-            Collection<GivenBook> givenBooks = gson.fromJson(serverResponse, collectionType);
+            Collection<GivenBook> givenBooks = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             givenBookTableList.clear();
             givenBookTableList.addAll(givenBooks);
         } catch (Exception e) {
@@ -165,7 +165,7 @@ public class ReturnBookController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "removeGivenBook";
-        String payload = new Gson().toJson(givenBookToRemove);
+        String payload = GsonUtil.getGson().toJson(givenBookToRemove);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -189,7 +189,7 @@ public class ReturnBookController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "addBookLog";
-        String payload = new Gson().toJson(bookLog);
+        String payload = GsonUtil.getGson().toJson(bookLog);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -213,7 +213,7 @@ public class ReturnBookController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "addNotification";
-        String payload = new Gson().toJson(notification);
+        String payload = GsonUtil.getGson().toJson(notification);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -237,7 +237,7 @@ public class ReturnBookController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "updateBook";
-        String payload = new Gson().toJson(book);
+        String payload = GsonUtil.getGson().toJson(book);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);

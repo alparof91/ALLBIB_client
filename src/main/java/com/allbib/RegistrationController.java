@@ -2,6 +2,7 @@ package com.allbib;
 
 import com.allbib.entity.Reader;
 import com.allbib.entity.User;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 
 import javafx.fxml.FXML;
@@ -81,12 +82,12 @@ public class RegistrationController {
         }
         else {
             User user = new User(userField.getText(), passwordField.getText(), "user");
-            String payload = new Gson().toJson(user);
+            String payload = GsonUtil.getGson().toJson(user);
             System.out.println("Sending to server:\ncommand: addUser,\ndata: " + payload);
             sendToServer("addUser",payload);
 
             Reader reader = new Reader(firstNameField.getText(), secondNameField.getText(), addressField.getText(), emailField.getText(), phoneField.getText(), user);
-            payload = new Gson().toJson(reader);
+            payload = GsonUtil.getGson().toJson(reader);
             System.out.println("Sending to server:\ncommand: addReader,\ndata: " + payload);
             sendToServer("addReader",payload);
 

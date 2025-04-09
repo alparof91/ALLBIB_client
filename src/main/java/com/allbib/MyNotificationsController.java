@@ -2,6 +2,7 @@ package com.allbib;
 
 import com.allbib.entity.Notification;
 import com.allbib.entity.User;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
@@ -105,10 +106,9 @@ public class MyNotificationsController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Notification[] notifications = gson.fromJson(serverResponse,Notification[].class);
+            //Notification[] notifications = GsonUtil.getGson().fromJson(serverResponse,Notification[].class);
             Type collectionType = new TypeToken<Collection<Notification>>(){}.getType();
-            Collection<Notification> collection = gson.fromJson(serverResponse, collectionType);
+            Collection<Notification> collection = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             notificationList.clear();
             notificationList.addAll(collection);
             List<Notification> list = (List<Notification>) collection;
@@ -125,7 +125,7 @@ public class MyNotificationsController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "fetchNotificationsForUser";
-        String payload = new Gson().toJson(username);
+        String payload = GsonUtil.getGson().toJson(username);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -137,10 +137,9 @@ public class MyNotificationsController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Notification[] notifications = gson.fromJson(serverResponse,Notification[].class);
+            //Notification[] notifications = GsonUtil.getGson().fromJson(serverResponse,Notification[].class);
             Type collectionType = new TypeToken<Collection<Notification>>(){}.getType();
-            Collection<Notification> collection = gson.fromJson(serverResponse, collectionType);
+            Collection<Notification> collection = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             notificationList.clear();
             notificationList.addAll(collection);
         } catch (Exception e) {
@@ -153,7 +152,7 @@ public class MyNotificationsController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "removeNotification";
-        String payload = new Gson().toJson(notification);
+        String payload = GsonUtil.getGson().toJson(notification);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);

@@ -1,36 +1,16 @@
 package com.allbib.entity;
 
 import java.io.Serializable;
-//import javax.persistence.*;
 
 
-/**
- * The persistent class for the readers database table.
- *
- */
-//@Entity
-//@Table(name="readers")
 public class Reader implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name="id_reader")
 	private int idReader;
-
-//	@Column(name="first_name")
 	private String firstName;
-
-//	@Column(name="second_name")
 	private String secondName;
-
 	private String address;
-
 	private String email;
-
 	private String phone;
-
-//	@OneToOne
 	private User user;
 
 	public Reader() {

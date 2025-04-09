@@ -3,41 +3,18 @@ package com.allbib.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-//import javax.persistence.*;
 
 
-/**
- * The persistent class for the books database table.
- * 
- */
-//@Entity
-//@Table(name="books")
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name="id_book")
 	private int idBook;
-
 	private String title;
-
 	private String author;
-
 	private String publisher;
-
 	private String year;
-
 	private int pages;
-
 	private String section;
-
 	private String availability;
-
-	//failed to lazily initialize a collection of role: com.testcompany.entity.Book.bookLogList, could not initialize proxy - no Session
-//	@OneToMany(fetch = FetchType.EAGER)
-//	@OneToMany
-//	private Collection<BookLog> bookLogList;
 
 	public Book() {
 	}

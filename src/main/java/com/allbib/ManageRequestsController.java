@@ -4,6 +4,7 @@ import com.allbib.entity.Book;
 import com.allbib.entity.BookLog;
 import com.allbib.entity.GivenBook;
 import com.allbib.entity.Request;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
@@ -163,10 +164,9 @@ public class ManageRequestsController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-//            Request[] requests = gson.fromJson(serverResponse,Request[].class);
+//            Request[] requests = GsonUtil.getGson().fromJson(serverResponse,Request[].class);
             Type collectionType = new TypeToken<Collection<Request>>(){}.getType();
-            Collection<Request> requests = gson.fromJson(serverResponse, collectionType);
+            Collection<Request> requests = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             requestTableList.clear();
             requestTableList.addAll(requests);
         } catch (Exception e) {
@@ -186,7 +186,7 @@ public class ManageRequestsController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "updateBook";
-        String payload = new Gson().toJson(book);
+        String payload = GsonUtil.getGson().toJson(book);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -208,7 +208,7 @@ public class ManageRequestsController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "removeRequest";
-        String payload = new Gson().toJson(requestToRemove);
+        String payload = GsonUtil.getGson().toJson(requestToRemove);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -244,7 +244,7 @@ public class ManageRequestsController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "addGivenBook";
-        String payload = new Gson().toJson(givenBook);
+        String payload = GsonUtil.getGson().toJson(givenBook);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);
@@ -269,7 +269,7 @@ public class ManageRequestsController implements Initializable {
         ExecutorService es = Executors.newCachedThreadPool();
 
         String command = "addBookLog";
-        String payload = new Gson().toJson(bookLog);
+        String payload = GsonUtil.getGson().toJson(bookLog);
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
         SocketClientCallable commandWithSocket = new SocketClientCallable(HOSTNAME, PORT, command, payload);

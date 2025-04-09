@@ -2,6 +2,7 @@ package com.allbib;
 
 import com.allbib.entity.Book;
 import com.allbib.entity.BookLog;
+import com.allbib.utils.gson.GsonUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
@@ -132,7 +133,7 @@ public class ManageBooksController implements Initializable {
             addMessageLabel.setText("There are empty fields! Try again!");
         } else {
             Book book = new Book(addBookTitle.getText(),addBookAuthor.getText(),addBookPublisher.getText(),addBookYear.getText(),Integer.parseInt(addBookPages.getText()),addBookSection.getText(),"yes");
-            String payload = new Gson().toJson(book);
+            String payload = GsonUtil.getGson().toJson(book);
             System.out.println("Adding new book to database...");
             sendToServer("addBook", payload);
             refreshBooksTable();
@@ -141,7 +142,7 @@ public class ManageBooksController implements Initializable {
 
     @FXML
     private void removeBookButtonAction(){
-        String payload = new Gson().toJson(activeBook);
+        String payload = GsonUtil.getGson().toJson(activeBook);
         sendToServer("removeBook", payload);
         refreshBooksTable();
     }
@@ -193,10 +194,9 @@ public class ManageBooksController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //Book[] books = gson.fromJson(serverResponse,Book[].class);
+            //Book[] books = GsonUtil.getGson().fromJson(serverResponse,Book[].class);
             Type collectionType = new TypeToken<Collection<Book>>(){}.getType();
-            Collection<Book> books = gson.fromJson(serverResponse, collectionType);
+            Collection<Book> books = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             bookTableList.clear();
             bookTableList.addAll(books);
         } catch (Exception e) {
@@ -208,7 +208,7 @@ public class ManageBooksController implements Initializable {
         //based on server_client_example
         ExecutorService es = Executors.newCachedThreadPool();
 
-        String payload = new Gson().toJson(activeBook);
+        String payload = GsonUtil.getGson().toJson(activeBook);
         String command = "fetchBookLogsForBook";
 
         System.out.println("Sending to server: \ncommand: " + command + ",\ndata: " + payload);
@@ -221,10 +221,9 @@ public class ManageBooksController implements Initializable {
             System.out.println("Response from server is : " + serverResponse);
 
             //deserialization from json: https://github.com/google/gson/blob/master/UserGuide.md#array-examples
-            Gson gson = new Gson();
-            //BookLog[] bookLogs = gson.fromJson(serverResponse,BookLog[].class);
+            //BookLog[] bookLogs = GsonUtil.getGson().fromJson(serverResponse,BookLog[].class);
             Type collectionType = new TypeToken<Collection<BookLog>>(){}.getType();
-            Collection<BookLog> bookLogs = gson.fromJson(serverResponse, collectionType);
+            Collection<BookLog> bookLogs = GsonUtil.getGson().fromJson(serverResponse, collectionType);
             bookLogList.clear();
             bookLogList.addAll(bookLogs);
         } catch (Exception e) {
